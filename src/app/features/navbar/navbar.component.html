@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" [routerLink]="'/homepage'">
+            <img src="assets/BETAUNI-removebg-preview.png" alt="" width="120" height="120">
+        </a>
+
+        <!-- Hamburger menu -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item" *ngFor="let item of navItems">
+                    <a class="nav-link" [routerLink]="item.route">
+                        {{item.label}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Login utente o profilo -->
+        <div *ngIf="userRole==0">
+            <button class="LoginBtn" [routerLink]="'/login'">
+                Area Riservata
+            </button>
+        </div>
+
+        <div *ngIf="userRole >= 1">
+            <button class="profileBtn" [routerLink]="'/profilePage'">
+                Profilo Personale
+            </button>
+            <button class="profileBtn" (click)="shared.Logout();">
+                Logout
+            </button>
+        </div>
+    </div>
+</nav>

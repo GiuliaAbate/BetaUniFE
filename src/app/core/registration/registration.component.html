@@ -1,0 +1,55 @@
+<h1>Registrazione</h1>
+
+<!-- Si clicca su un pulsante e mostra il form per studente o professore -->
+<div *ngIf="!isClicked">
+    <h2>Sei uno studente o un professore?</h2>
+    <button id="studBtn" (click)="check('student')">Studente</button>
+    <button id="profBtn" (click)="check('professor')">Professore</button>
+</div>
+
+<hr>
+
+<div *ngIf="isClicked">
+    <form (ngSubmit)="onSubmit()">
+        <label>Nome</label>
+        <input type="text" name="name" placeholder="Nome" [(ngModel)]="formData.name">
+
+        <br>
+
+        <label>Cognome</label>
+        <input type="text" name="surname" placeholder="Cognome" [(ngModel)]="formData.surname">
+
+        <br>
+
+        <label>Data di nascita</label>
+        <input type="date" name="birthdate" placeholder="Data di nascita" [(ngModel)]="formData.birthDate">
+
+        <br>
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Email" [(ngModel)]="formData.email">
+
+        <br>
+
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password" [(ngModel)]="formData.password">
+
+        <br>
+
+        <label>Numero di telefono</label>
+        <input type="text" name="phoneNumber" placeholder="Numero di telefono" [(ngModel)]="formData.phoneNumber">
+
+        <br>
+
+        <label>Seleziona la facoltà a cui vuoi iscriverti</label>
+        <select name="departmentId" [(ngModel)]="formData.departmentId">
+            <option *ngFor="let dep of departments" [value]="dep.departmentId">
+                {{dep.name}}
+            </option>
+        </select>
+
+        <br>
+
+        <button type="submit">Invia</button>
+    </form>
+</div>

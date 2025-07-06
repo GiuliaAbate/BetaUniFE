@@ -1,0 +1,28 @@
+<h1>Accesso</h1>
+
+<div *ngIf="!isClicked">
+    <h2>Accedi come:</h2>
+    <button id="studBtn" (click)="check('student')">Studente</button>
+    <button id="profBtn" (click)="check('professor')">Professore</button>
+    
+    <p>Non sei già registrato? <a [routerLink]="'/register'">Fallo Ora</a></p>
+</div>
+<hr>
+
+<div *ngIf="isClicked">
+    <form (ngSubmit)='onSubmit()'>
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Email" [(ngModel)]="formData.email">
+
+        <br>
+
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password" [(ngModel)]="formData.password">
+
+        <br>
+
+        <button type="submit">Invia</button>
+    </form>
+</div>
+
