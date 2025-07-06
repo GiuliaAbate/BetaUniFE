@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { SharedService } from '../../shared/shared.service';
 import { SigninService } from '../../shared/signin.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -55,5 +55,9 @@ export class LoginComponent {
     this.role = role;
     this.isClicked = true;
     console.log("Ruolo selezionato:", this.role);
+  }
+
+  goBack(): void {
+    this.isClicked = false;
   }
 }

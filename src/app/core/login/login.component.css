@@ -1,0 +1,113 @@
+h1 {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 25px;
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Parte iniziale dove si sceglie il ruolo */
+.user-choice {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+h2 {
+    padding-bottom: 20px;
+    font-size: 30px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+}
+
+p {
+    padding-top: 30px;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+.back {
+    height: 30px;
+    align-self: flex-start;
+    padding: 4px 8px;
+    gap:10px;
+    margin-bottom: 13px;
+    display: flex;
+    align-items: center;
+    background-color: var(--base) !important;
+    color: var(--text-color) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: -1px 1px 12px rgba(255, 38, 38, 0.4) !important;
+}
+
+
+
+/* Form */
+
+.form-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100%;
+    background-color: var(--base);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 7px 9px 16px 6px rgba(196, 40, 40, 0.352);
+    max-width: 400px;
+    margin: 20px auto;
+    flex-direction: column;
+}
+
+.form-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.form-container input {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.form-container button {
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 16px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-container button:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.03);
+}

@@ -1,28 +1,39 @@
-<h1>Accesso</h1>
+<h1>Accedi a BetaUni</h1>
 
-<div *ngIf="!isClicked">
-    <h2>Accedi come:</h2>
-    <button id="studBtn" (click)="check('student')">Studente</button>
-    <button id="profBtn" (click)="check('professor')">Professore</button>
-    
-    <p>Non sei già registrato? <a [routerLink]="'/register'">Fallo Ora</a></p>
+<div *ngIf="!isClicked" class="user-choice">
+    <h2>Sei uno <strong>studente</strong> o un <strong>professore</strong>?</h2>
+
+    <div class="btn-group">
+        <button class="mainBtn" (click)="check('student')">Studente</button>
+        <button class="mainBtn" (click)="check('professor')">Professore</button>
+    </div>
+
+    <p>Non sei già registrato? <a [routerLink]="'/register'">Registrati subito</a></p>
 </div>
-<hr>
 
-<div *ngIf="isClicked">
+<div *ngIf="isClicked" class="form-container">
+    <button class="back" (click)="goBack()" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+        </svg>
+        Indietro
+    </button>
     <form (ngSubmit)='onSubmit()'>
 
-        <label>Email</label>
-        <input type="email" name="email" placeholder="Email" [(ngModel)]="formData.email">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="inserisci email"
+                [(ngModel)]="formData.email">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="inserisci password"
+                [(ngModel)]="formData.password">
+        </div>
 
-        <br>
-
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Password" [(ngModel)]="formData.password">
-
-        <br>
 
         <button type="submit">Invia</button>
     </form>
 </div>
-
