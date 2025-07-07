@@ -10,6 +10,7 @@
     --transparent: rgba(196, 40, 40, 0.352);
 }
 
+/* Pulsante principale */
 .mainBtn {
     background-color: var(--primary-color);
     color: white;
@@ -29,4 +30,43 @@
     border-color: var(--tertiary-color);
     box-shadow: 0 6px 8px rgba(123, 9, 9, 0.6);
     transform: scale(1.05) translateY(-3px);
+}
+
+/* Pulsante dei form */
+.formBtn {
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 16px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.formBtn:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.03);
+}
+
+/* Pulsante per tornare indietro */
+.backBtn {
+    height: 30px;
+    align-self: flex-start;
+    padding: 4px 8px;
+    gap: 10px;
+    margin-bottom: 13px;
+    display: flex;
+    align-items: center;
+    background-color: var(--base) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--secondary-color) !important;
+    border-radius: 6px;
+    box-shadow: -1px 1px 12px rgba(255, 38, 38, 0.4) !important;
+    transition: transform 0.2s ease;
+}
+
+.backBtn:hover {
+    transform: scale(1.03);
 }

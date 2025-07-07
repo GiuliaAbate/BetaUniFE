@@ -12,7 +12,8 @@
 </div>
 
 <div *ngIf="isClicked" class="form-container">
-    <button class="back" (click)="goBack()" >
+
+    <button class="backBtn" (click)="goBack()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
             viewBox="0 0 16 16">
             <path fill-rule="evenodd"
@@ -20,20 +21,28 @@
         </svg>
         Indietro
     </button>
+
     <form (ngSubmit)='onSubmit()'>
-
         <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="inserisci email"
-                [(ngModel)]="formData.email">
+            <label for="email" class="form-label">Email * </label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="inserisci email"
+                [(ngModel)]="formData.email" #email="ngModel" required email>
+
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+                <div *ngIf="email.errors?.['required']">Inserire email</div>
+            </div>
         </div>
         <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="inserisci password"
-                [(ngModel)]="formData.password">
+            <label for="password" class="form-label">Password *</label>
+            <input type="password" class="form-control" id="password" name="password " placeholder="inserisci password"
+                [(ngModel)]="formData.password" #password="ngModel" required>
+
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+                <div *ngIf="password.errors?.['required']">Inserire password</div>
+            </div>
         </div>
 
 
-        <button type="submit">Invia</button>
+        <button type="submit" class="formBtn">Invia</button>
     </form>
 </div>

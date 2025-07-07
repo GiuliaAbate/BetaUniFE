@@ -1,0 +1,89 @@
+h1 {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 25px;
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Parte iniziale dove si sceglie il ruolo */
+.user-choice {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+h2 {
+    padding-bottom: 20px;
+    font-size: 30px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+}
+
+.form-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100%;
+    background-color: var(--base);
+    padding: 30px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 12px;
+    box-shadow: 7px 9px 16px 6px rgba(196, 40, 40, 0.352);
+    max-width: 550px;
+    margin: 20px auto;
+    flex-direction: column;
+}
+
+.form-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.form-control {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid black;
+}
+
+.form-select {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid black;
+}
+
+.form-group {
+    position: relative;
+}
+
+.alert {
+    margin-bottom: 0;
+    margin-top: 8px;
+    color: red;
+    font-weight: 500;
+    padding: 0;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+    border-color: red;
+}

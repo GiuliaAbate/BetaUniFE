@@ -7,10 +7,11 @@ import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-registration',
+  selector: 'app-registration',  
   imports: [CommonModule, FormsModule],
   templateUrl: './registration.component.html',
-  styleUrl: './registration.component.css'
+  styleUrl: './registration.component.css',
+
 })
 export class RegistrationComponent implements OnInit {
 
@@ -71,5 +72,9 @@ export class RegistrationComponent implements OnInit {
     this.role = role;
     this.isClicked = true;
     console.log("Ruolo selezionato:", this.role);
+  }
+
+  goBack(): void {
+    this.isClicked = false;
   }
 }

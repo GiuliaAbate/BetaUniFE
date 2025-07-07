@@ -1,55 +1,104 @@
-<h1>Registrazione</h1>
+<h1>REGISTRATI A BETAUNI</h1>
 
 <!-- Si clicca su un pulsante e mostra il form per studente o professore -->
-<div *ngIf="!isClicked">
-    <h2>Sei uno studente o un professore?</h2>
-    <button id="studBtn" (click)="check('student')">Studente</button>
-    <button id="profBtn" (click)="check('professor')">Professore</button>
+<div *ngIf="!isClicked" class="user-choice">
+    <h2>Sei uno <strong>studente</strong> o un <strong>professore</strong>?</h2>
+
+    <div class="btn-group">
+        <button class="mainBtn" (click)="check('student')">Studente</button>
+        <button class="mainBtn" (click)="check('professor')">Professore</button>
+    </div>
+
 </div>
 
-<hr>
+<div *ngIf="isClicked" class="form-container">
+    <button class="backBtn" (click)="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+        </svg>
+        Indietro
+    </button>
 
-<div *ngIf="isClicked">
-    <form (ngSubmit)="onSubmit()">
-        <label>Nome</label>
-        <input type="text" name="name" placeholder="Nome" [(ngModel)]="formData.name">
+    <div class="form-group">
+        <form (ngSubmit)="onSubmit()" #myForm="ngForm" novalidate>
+            <div class="row mb-1">
+                <div class="col">
+                    <label for="name" class="form-label">Nome *</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="inserisci nome"
+                        [(ngModel)]="formData.name" #name="ngModel" required>
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+                        <div *ngIf="name.errors?.['required']">Il nome è obbligatorio</div>
+                    </div>
+                </div>
 
-        <br>
+                <div class="col">
+                    <label for="surname" class="form-label">Cognome *</label>
+                    <input type="text" class="form-control" id="surname" placeholder="inserisci cognome"
+                        [(ngModel)]="formData.surname" name="surname" #surname="ngModel" required>
+                    <div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="alert">
+                        <div *ngIf="surname.errors?.['required']">Il cognome è obbligatorio</div>
+                    </div>
+                </div>
+            </div>
 
-        <label>Cognome</label>
-        <input type="text" name="surname" placeholder="Cognome" [(ngModel)]="formData.surname">
+            <div class="row mb-2">
+                <div class="col">
+                    <label for="birthDate" class="form-label">Data di nascita *</label>
+                    <input type="date" class="form-control" id="birthDate" name="birthDate"
+                        [(ngModel)]="formData.birthDate" #birthDate="ngModel" required>
+                    <div *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)" class="alert">
+                        <div *ngIf="birthDate.errors?.['required']">La data di nascita è obbligatoria</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="phoneNumber" class="form-label">Numero di telefono * </label>
+                    <input type="text" class="form-control" id="phoneNumber" placeholder="inserisci numero di telefono"
+                        [(ngModel)]="formData.phoneNumber" name="phoneNumber" #phoneNumber="ngModel" required
+                        pattern="^[0-9]{10}$">
+                    <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="alert">
+                        <div *ngIf="phoneNumber.errors?.['required']">Il numero di telefono è obbligatorio</div>
+                        <div *ngIf="phoneNumber.errors?.['pattern']">Il numero deve contenere 10 cifre</div>
+                    </div>
+                </div>
+            </div>
 
-        <br>
+            <div class="mb-2">
+                <label for="email" class="form-label">Email *</label>
+                <input type="email" class="form-control" id="email" placeholder="inserisci email"
+                    [(ngModel)]="formData.email" name="email" #email="ngModel" required email>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+                    <div *ngIf="email.errors?.['required']">L'email è obbligatoria</div>
+                    <div *ngIf="email.errors?.['email']">Formato email non valido</div>
+                </div>
+            </div>
 
-        <label>Data di nascita</label>
-        <input type="date" name="birthdate" placeholder="Data di nascita" [(ngModel)]="formData.birthDate">
+            <div class="mb-2">
+                <label for="password" class="form-label">Password *</label>
+                <input type="password" class="form-control" id="password" placeholder="inserisci password"
+                    [(ngModel)]="formData.password" name="password" #password="ngModel" required minlength="6">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+                    <div *ngIf="password.errors?.['required']">La password è obbligatoria</div>
+                    <div *ngIf="password.errors?.['minlength']">Minimo 6 caratteri</div>
+                </div>
+            </div>
 
-        <br>
+            <div class="mb-2">
+                <label class="form-label">Seleziona la facoltà a cui vuoi iscriverti *</label>
+                <select class="form-select" [(ngModel)]="formData.departmentId" name="departmentId"
+                    #departmentId="ngModel" required>
+                    <option value="" selected>Scegli una facoltà</option>
+                    <option *ngFor="let dep of departments" [value]="dep.departmentId">
+                        {{dep.name}}
+                    </option>
+                </select>
+                <div *ngIf="departmentId.invalid && (departmentId.dirty || departmentId.touched)" class="alert">
+                    <div *ngIf="departmentId.errors?.['required']">La facoltà è obbligatoria</div>
+                </div>
+            </div>
 
-        <label>Email</label>
-        <input type="email" name="email" placeholder="Email" [(ngModel)]="formData.email">
-
-        <br>
-
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Password" [(ngModel)]="formData.password">
-
-        <br>
-
-        <label>Numero di telefono</label>
-        <input type="text" name="phoneNumber" placeholder="Numero di telefono" [(ngModel)]="formData.phoneNumber">
-
-        <br>
-
-        <label>Seleziona la facoltà a cui vuoi iscriverti</label>
-        <select name="departmentId" [(ngModel)]="formData.departmentId">
-            <option *ngFor="let dep of departments" [value]="dep.departmentId">
-                {{dep.name}}
-            </option>
-        </select>
-
-        <br>
-
-        <button type="submit">Invia</button>
-    </form>
+            <button type="submit" class="formBtn" [disabled]="myForm.invalid">Invia</button>
+        </form>
+    </div>
 </div>
