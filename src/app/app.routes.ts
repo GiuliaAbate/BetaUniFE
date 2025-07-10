@@ -10,6 +10,7 @@ import { StudyPlanComponent } from './features/study-plan/study-plan.component';
 import { CoursesComponent } from './features/courses/courses.component';
 import { LaboratoriesComponent } from './features/laboratories/laboratories.component';
 import { ExamsComponent } from './features/exams/exams.component';
+import { DepDetailsComponent } from './features/dep-details/dep-details.component';
 
 export const routes: Routes = [
     {
@@ -61,4 +62,8 @@ export const routes: Routes = [
         path: "exams",
         component: ExamsComponent
     },
+    {
+        path: "dep-details",
+        component: DepDetailsComponent
+    }
 ];
