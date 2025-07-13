@@ -20,9 +20,9 @@
 
 <div class="dep-container">
     <h2>Le nostre facoltà</h2>
-    <div class="dep-card">
+    <div class="dep-card"  [routerLink]="['/dep-details', 'A100']">
         <img src="/assets/computer-science.jpg" class="card-img" alt="Computer Science">
-        <div class="dep-infos">
+        <div class="dep-infos" >
             <h3>Informatica</h3>
             <p>Una facoltà orientata alla formazione di esperti in tecnologie digitali, sviluppo software e intelligenza
                 artificiale.
@@ -32,7 +32,7 @@
             </p>
         </div>
     </div>
-    <div class="dep-card">
+    <div class="dep-card" [routerLink]="['/dep-details', 'A400']">
         <img src="/assets/economy.jpg" class="card-img" alt="Economy">
         <div class="dep-infos">
             <h3>Economia</h3>
@@ -42,7 +42,7 @@
             </p>
         </div>
     </div>
-    <div class="dep-card">
+    <div class="dep-card" [routerLink]="['/dep-details', 'A300']">
         <img src="/assets/law-school.jpg" class="card-img" alt="Law School">
         <div class="dep-infos">
             <h3>Giurisprudenza</h3>
@@ -53,7 +53,7 @@
                 alla dimensione europea e internazionale</p>
         </div>
     </div>
-    <div class="dep-card">
+    <div class="dep-card" [routerLink]="['/dep-details', 'A200']">
         <img src="/assets/communication.png" class="card-img" alt="Communication">
         <div class="dep-infos">
             <h3>Scienze della comunicazione</h3>
@@ -64,7 +64,7 @@
             </p>
         </div>
     </div>
-    <div class="dep-card">
+    <div class="dep-card" [routerLink]="['/dep-details', 'A400']">
         <img src="/assets/languages.png" class="card-img" alt="Languages">
         <div class="dep-infos">
             <h3>Lingue e letterature straniere</h3>

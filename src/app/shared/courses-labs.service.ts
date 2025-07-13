@@ -1,0 +1,41 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+export interface Course {
+  name: string;
+  startDate: string;
+  endDate: string;  
+  classrooms?: Classroom[];
+}
+export interface Laboratory {
+  name: string;
+  attendance: boolean;
+}
+
+export interface Classroom {
+  name: string;
+  number: number;
+  maxCapacity: number;
+  courseId: string;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CoursesLabsService {
+
+  constructor(private http: HttpClient) { }
+
+  private courseUrl = 'https://localhost:7129/api/Courses';
+  private labUrl = 'https://localhost:7129/api/Laboratories';
+
+  GetCoursesByDepartment(depId: string): Observable<Course[]> {
+    return this.http.get<Course[]>(`${this.courseUrl}/GetCoursesByDep/${depId}`);
+  }
+
+  GetLabsByDepartment(depId: string): Observable<Laboratory[]> {
+    return this.http.get<Laboratory[]>(`${this.labUrl}/GetLabsByDep/${depId}`);
+  }
+
+}

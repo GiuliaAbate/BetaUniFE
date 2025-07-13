@@ -28,6 +28,11 @@ export class SharedService {
     return this.http.get<Department[]>(this.apiUrl);
   }
 
+  //Metodo per prendere dipartimento dato id
+  GetDepartmentById(depId : string): Observable<Department> {
+    return this.http.get<Department>(`${this.apiUrl}/${depId}`);
+  }
+
   //Metodo per logout
   Logout() {
     localStorage.removeItem('token');
@@ -43,7 +48,9 @@ export class SharedService {
   }
 
   SetUserRole(role: number) {
-  localStorage.setItem('userRole', role.toString());
-  this.userRoleSubject.next(role);
-}
+    localStorage.setItem('userRole', role.toString());
+    this.userRoleSubject.next(role);
+  }
+
+  
 }

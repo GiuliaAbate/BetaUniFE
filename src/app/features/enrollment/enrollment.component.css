@@ -1,0 +1,48 @@
+h1 {
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding: 2%;
+}
+
+.main-container p{
+    padding-left: 2%;
+    padding-right: 10%;
+    font-size: 17px;
+}
+
+/* accordion */
+.accordion-container {
+    margin-left: 2%;
+    margin-bottom: 2%;
+    margin-right: 2%;
+}
+
+.accordion {
+    padding-top: 1%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.accordion-item {
+    margin-top: 15px;
+    border-radius: 20px !important;
+}
+
+.accordion-button,
+.accordion-button.collapsed {
+    background-color: rgba(255, 38, 38, 0.36);
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: 500;
+    border-radius: 20px !important;
+}
+
+.accordion-item:has(.accordion-button:not(.collapsed)) {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.accordion-button:not(.collapsed) {
+    box-shadow: none;
+}

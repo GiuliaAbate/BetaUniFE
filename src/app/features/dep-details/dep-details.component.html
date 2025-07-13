@@ -1,1 +1,265 @@
-<p>dep-details works!</p>
+<div class="main-container">
+  <div *ngIf="department" class="dep-title">
+    <h1>{{department.name}}</h1>
+  </div>
+  <!-- <div class="dep-title">
+    <h1>Nome facoltà</h1>
+  </div> -->
+
+
+  <!-- Informatica -->
+  <div *ngIf="departmentId === 'A100'" class="intro-container">
+    <p>La Facoltà di Informatica forma professionisti capaci di progettare, sviluppare e gestire sistemi software e
+      infrastrutture tecnologiche all’avanguardia. <br>
+      Grazie a un approccio teorico-pratico, prepara gli studenti ad
+      affrontare le sfide dell’innovazione digitale e a lavorare in diversi ambiti tecnologici, dalla
+      programmazione
+      all’intelligenza artificiale.</p>
+  </div>
+
+  <div *ngIf="departmentId === 'A100'" class="summary-container">
+    <h2>Il corso in sintesi</h2>
+    <p>Il Corso di Laurea in Informatica (classe L-31) si articola in <strong>tre anni</strong> per un totale di
+      <strong>180</strong> crediti formativi e
+      prevede una modalità didattica convenzionale, con lezioni frontali, esercitazioni e laboratori. È offerto in
+      <strong>lingua italiana</strong> e ha sede a Torino. L’accesso è <strong>libero</strong>, ma è previsto un test
+      valutativo per misurare le
+      conoscenze di base. Il corso fornisce le competenze necessarie per progettare software, gestire sistemi
+      informatici complessi e comprendere i fondamenti delle tecnologie digitali, preparando figure professionali in
+      grado di lavorare nell’ambito dello sviluppo, della consulenza IT e dell’innovazione tecnologica.
+    </p>
+  </div>
+
+  <!-- Scienze della comunicazione -->
+  <div *ngIf="departmentId === 'A200'" class="intro-container">
+    <p>La Facoltà di Scienze della Comunicazione prepara professionisti in grado di analizzare e gestire processi
+      comunicativi in ambito sociale, mediatico e aziendale, con attenzione alle dinamiche culturali e
+      tecnologiche
+      contemporanee.</p>
+  </div>
+
+  <div *ngIf="departmentId === 'A200'" class="summary-container">
+    <h2>Il corso in sintesi</h2>
+    <p>Il Corso di Laurea in Scienze della Comunicazione (classe L-20 R) è ad accesso <strong>libero</strong>.
+      La durata è di <strong>3 anni</strong>, per un totale di <strong>180</strong> crediti formativi. Il corso si
+      svolge in
+      <strong>lingua italiana</strong> , con modalità didattica convenzionale, presso la sede di Torino. Il programma
+      esplora teorie,
+      linguaggi e strumenti della comunicazione nei media tradizionali e digitali, integrando discipline sociologiche,
+      linguistiche e tecnologiche. I laureati possono lavorare nei settori del giornalismo, comunicazione istituzionale,
+      pubblicità, social media management e organizzazione di eventi.
+    </p>
+  </div>
+
+  <!-- Giurisprudenza -->
+  <div *ngIf="departmentId === 'A300'" class="intro-container">
+    <p>La Facoltà di Giurisprudenza forma esperti in diritto, capaci di operare nei settori giudiziario,
+      amministrativo
+      e privato. Il percorso sviluppa capacità di analisi critica e interpretazione delle norme giuridiche in un
+      contesto nazionale e internazionale.</p>
+  </div>
+
+  <div *ngIf="departmentId === 'A300'" class="summary-container">
+    <h2>Il corso in sintesi</h2>
+    <p>Il corso di Giurisprudenza (classe LMG/01 – Magistrale a ciclo unico) si svolge a Torino, ha una durata di
+      <strong>5 anni</strong>
+      e prevede una modalità didattica convenzionale. L’accesso è <strong>libero</strong>. Le lezioni, in <strong>lingua
+        italiana</strong>, coprono <strong>300</strong>
+      crediti e offrono un approccio completo al sistema giuridico nazionale ed europeo. Gli studenti acquisiscono
+      padronanza nelle principali aree del diritto (civile, penale, amministrativo, costituzionale), con possibilità di
+      partecipare a laboratori, simulazioni e tirocini. Il corso prepara all’esercizio delle professioni legali
+      (avvocatura, magistratura, notariato) e a ruoli giuridici in aziende, enti pubblici e organizzazioni
+      internazionali.
+    </p>
+  </div>
+
+  <!-- Economia -->
+  <div *ngIf="departmentId === 'A400'" class="intro-container">
+    <p>La Facoltà di Economia offre una formazione solida nelle discipline economiche, finanziarie e manageriali,
+      preparando studenti a comprendere i meccanismi dei mercati e a gestire organizzazioni pubbliche e private in
+      un contesto globale.</p>
+  </div>
+
+  <div *ngIf="departmentId === 'A400'" class="summary-container">
+    <h2>Il corso in sintesi</h2>
+    <p>Il Corso di Laurea in Economia (classe L-33) dura <strong>3 anni</strong>, con <strong>180</strong> crediti
+      complessivi e si svolge in <strong>lingua italiana</strong>, con sede a Torino.
+      L’accesso è <strong>libero</strong> e il corso segue una modalità didattica
+      convenzionale, combinando insegnamenti teorici con esercitazioni pratiche e analisi di casi.
+      Il programma fornisce strumenti per comprendere le dinamiche economiche e gestionali,
+      sviluppare capacità analitiche e affrontare le sfide del mercato globale.
+      I laureati sono preparati per operare in aziende, enti pubblici, banche, società di consulenza o proseguire con
+      studi economici avanzati.</p>
+  </div>
+
+  <!-- Lingue e Letterature straniere -->
+  <div *ngIf="departmentId === 'A500'" class="intro-container">
+    <p>La Facoltà di Lingue e Letterature Straniere offre una formazione approfondita nelle lingue, culture e
+      letterature straniere, favorendo competenze linguistiche avanzate e capacità critiche per operare in
+      contesti interculturali.</p>
+  </div>
+
+  <div *ngIf="departmentId === 'A500'" class="summary-container">
+    <h2>Il corso in sintesi</h2>
+    <p>Il Corso di Laurea in Lingue e Letterature Straniere (classe L-11) si sviluppa in <strong>3</strong> anni, con
+      <strong>180</strong> crediti
+      formativi, e si tiene in <strong>lingua italiana</strong>, presso la sede di Torino. L’accesso è
+      <strong>libero</strong> e la modalità didattica è
+      convenzionale, con corsi teorici, esercitazioni linguistiche e laboratori di traduzione. Gli studenti apprendono
+      due o più lingue straniere e studiano la cultura, la letteratura e la linguistica dei paesi di riferimento. Il
+      corso prepara a carriere nei settori della traduzione, mediazione linguistica, turismo, editoria, relazioni
+      internazionali e insegnamento delle lingue.
+    </p>
+  </div>
+</div>
+
+<div class="accordion-container">
+  <h3>Informazioni generali</h3>
+  <!-- Accordion con info -> requisiti di ammissione e insegnamenti (elenco corsi e laboratori) -->
+  <div class="accordion" id="accordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          Requisiti di ammissione
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordion">
+        <div class="accordion-body">
+          <!-- se facoltà = informatica -->
+          <div *ngIf="departmentId === 'A100'" class="accordion-info">
+            <h4>Requisiti e scadenze</h4>
+            <p>
+              Per essere ammessi al corso di laurea occorre essere in possesso di un idoneo titolo di studio e di
+              un'adeguata preparazione iniziale.
+              Il titolo di studio che consente l'accesso è un diploma di scuola secondaria superiore di durata
+              quinquennale o altro titolo di studio conseguito all'estero, riconosciuto idoneo ai sensi delle leggi
+              vigenti.
+              La verifica della preparazione necessaria per intraprendere lo studio delle discipline del Corso di Laurea
+              in Informatica viene valutata mediante un test, al quale gli studenti che hanno intenzione di iscriversi
+              devono partecipare. Qualora la verifica non risulti positiva, sono segnalate agli studenti le carenze
+              formative e sono indicati gli obblighi formativi aggiuntivi.
+
+            </p>
+            <h5>Scadenze principali</h5>
+            <ul>
+              <li> Iscrizioni: 15 luglio – 30 settembre</li>
+              <li>Scelta piano carriera: entro il 30 novembre</li>
+            </ul>
+          </div>
+
+          <!-- se facoltà = scienze della comunicazione -->
+          <div *ngIf="departmentId === 'A200'" class="accordion-info">
+            <h4>Requisiti e scadenze</h4>
+            <p>
+              Per l’iscrizione è richiesto avere competenze di base di lingua italiana, lingua inglese, logica,
+              matematica,
+              cultura generale contemporanea.
+              La verifica del possesso di tali conoscenze d'ingresso avverrà, all'inizio dell'a.a., tramite la
+              somministrazione di un test di accertamento dei requisiti minimi (TARM). Eventuali lacune saranno
+              compensate mediante laboratori on line e lezioni di riallineamento.
+            </p>
+            <h5>Scadenze principali</h5>
+            <ul>
+              <li> Iscrizioni: 15 luglio – 30 settembre</li>
+              <li>Scelta piano carriera: entro il 30 novembre</li>
+            </ul>
+          </div>
+
+          <!-- se facoltà = giurisprudenza -->
+          <div *ngIf="departmentId === 'A300'" class="accordion-info">
+            <h4>Requisiti e scadenze</h4>
+            <p>
+              Requisito d'accesso è il possesso di un diploma di scuola secondaria superiore o analogo titolo conseguito
+              all'estero riconosciuto idoneo. Sono richieste una buona padronanza della lingua italiana, nonché
+              conoscenze storiche e di cultura generale tali da consentire l'accostamento al lessico disciplinare
+              specifico. E' altresì richiesta una sufficiente conoscenza di una lingua straniera, che consenta, nel
+              corso dei propri studi, di acquisire padronanza della lingua giuridica. La preparazione iniziale sarà
+              verificata con le modalità previste dal Regolamento didattico del corso di laurea, che stabilirà anche le
+              modalità per colmare entro il primo anno di corso le eventuali carenze nelle conoscenze linguistiche,
+              storiche e di cultura generale.
+            </p>
+            <h5>Scadenze principali</h5>
+            <ul>
+              <li> Iscrizioni: 15 luglio – 30 settembre</li>
+              <li> Scelta piano carriera: entro il 30 novembre</li>
+            </ul>
+          </div>
+
+          <!-- se facoltà = economia-->
+          <div *ngIf="departmentId === 'A400'" class="accordion-info">
+            <h4>Requisiti e scadenze</h4>
+            <p>
+              Per essere ammessi al corso di laurea in Economia occorre essere in possesso di un diploma di scuola
+              secondaria superiore o di altro titolo di studio conseguito all'estero, riconosciuto idoneo, con adeguata
+              conoscenza iniziale della lingua italiana. A livello personale lo studente deve dimostrare un'adeguata
+              padronanza dei concetti di base di algebra e analisi, unitamente ad una predisposizione al ragionamento
+              logico e ad una curiosità per i fatti e le istituzioni economiche. La concreta determinazione delle
+              conoscenze richieste nonché le relative modalità di verifica verranno declinate nel Regolamento didattico
+              del corso di studio che conterrà anche la definizione degli obblighi formativi aggiuntivi previsti nel
+              caso in cui la verifica non sia positiva.
+            </p>
+            <h5>Scadenze principali</h5>
+            <ul>
+              <li> Iscrizioni: 15 luglio – 30 settembre</li>
+              <li> Test di valutazione: settembre</li>
+              <li> Scelta piano carriera: entro il 30 novembre</li>
+            </ul>
+          </div>
+
+          <!-- se facoltà = lingue e letterature straniere -->
+          <div *ngIf="departmentId === 'A500'" class="accordion-info">
+            <h4>Requisiti e scadenze</h4>
+            <p>
+              Sono ammessi al Corso di Laurea in Lingue e Letterature Straniere gli studenti in possesso di un diploma di
+              scuola secondaria superiore o di altro titolo di studio conseguito all'estero, riconosciuto idoneo. Sono
+              richieste conoscenze sicure della lingua italiana e solide basi di cultura generale, nonché vivo interesse
+              allo studio delle lingue, letterature e culture straniere.
+              La specificazione delle modalità di verifica di tali requisiti è rimandata al Regolamento Didattico del
+              Corso di Laurea con indicazione degli obblighi formativi aggiuntivi previsti nel caso in cui la verifica
+              non sia positiva.
+            </p>
+            <h5>Scadenze principali</h5>
+            <ul>
+              <li> Iscrizioni: 15 luglio – 30 settembre</li>
+              <li> Scelta piano carriera: entro il 30 novembre</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+          aria-expanded="false" aria-controls="collapseTwo">
+          Insegnamenti
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordion">
+        <div class="accordion-body">
+          <!-- elenco dei corsi e laboratori -->
+          <div *ngIf="courses.length > 0; else noCourses">
+            <h4>Corsi</h4>
+            <ul>
+              <li *ngFor="let course of courses">{{course.name}}</li>
+            </ul>
+          </div>
+          <ng-template #noCourses>
+            <p>Nessun corso disponibile.</p>
+          </ng-template>
+
+          <div *ngIf="labs.length > 0; else noLabs">
+            <h4>Laboratori</h4>
+            <ul>
+              <li *ngFor="let lab of labs">{{ lab.name }}</li>
+            </ul>
+          </div>
+          <ng-template #noLabs>
+            <p>Nessun laboratorio disponibile.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

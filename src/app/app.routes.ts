@@ -63,7 +63,7 @@ export const routes: Routes = [
         component: ExamsComponent
     },
     {
-        path: "dep-details",
+        path: "dep-details/:id",
         component: DepDetailsComponent
     }
 ];
