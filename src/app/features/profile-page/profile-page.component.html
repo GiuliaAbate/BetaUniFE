@@ -1,1 +1,47 @@
-<p>profile-page works!</p>
+<div class="main-container">
+    <div class="personal-infos">
+        <h1>Dati Personali</h1>
+        <div class="data-container row" *ngIf="student">
+            <p>
+                <strong>Nome</strong>
+                {{ student.name }}
+            </p>
+            <p>
+                <strong>Cognome</strong>
+                {{ student.surname }}
+            </p>
+            <p>
+                <strong>Data di nascita</strong>
+                {{ student.birthDate | date:'dd/MM/yyyy' }}
+            </p>
+            <p>
+                <strong>Numero di telefono</strong>
+                {{ student.phoneNumber }}
+            </p>
+            <p>
+                <strong>Email</strong>
+                {{ student.email }}
+            </p>
+            <div class="btn-container" *ngIf="!isClicked">
+                <button class="formBtn" (click)="checkBtn()">Modifica dati</button>
+            </div>
+
+            <div class="data-container-input row" *ngIf="isClicked">
+                <div class="input-group">
+                    <label for="phoneNumber">Nuovo numero di telefono</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" [(ngModel)]="phoneNumberInput">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Nuova password</label>
+                    <input type="password" name="password" id="password" [(ngModel)]="passwordInput">
+                </div>
+
+                <button class="formBtn" (click)="applyChanges()">Conferma modifica</button>
+            </div>
+        </div>
+    </div>
+    <div class="career-infos">
+        <h1>Riepilogo carriera</h1>
+    </div>
+</div>

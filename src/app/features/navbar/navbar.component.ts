@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
     this.shared.userRole.subscribe(role => {
       this.userRole = role;
       this.showNavItems();
-    })
+    });
   }
 
   //Mostra navbar diversa in base all'utente

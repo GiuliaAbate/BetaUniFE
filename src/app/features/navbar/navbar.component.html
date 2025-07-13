@@ -40,8 +40,8 @@
                 <div class="user-actions d-flex align-items-center gap-2">
                     <button *ngIf="userRole == 0" class="loginBtn" [routerLink]="'/login'">Area Riservata</button>
                     <ng-container *ngIf="userRole >= 1">
-                        <button class="profileBtn" [routerLink]="'/profilePage'">Profilo Personale</button>
-                        <button class="profileBtn" (click)="shared.Logout();">Logout</button>
+                        <button class="profileBtn" [routerLink]="'/profilePage'"><i class="bi bi-person-circle"></i></button>
+                        <button class="logoutBtn" (click)="shared.Logout();">Logout</button>
                     </ng-container>
                 </div>
             </div>

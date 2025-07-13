@@ -16,7 +16,6 @@ export class SharedService {
 
   constructor(private http: HttpClient, private route: Router) { }
 
-
   departments: Department[] = [];
   private apiUrl = 'https://localhost:7129/api/Departments';
 
