@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Professor {
-  profID: string;
+  profId: string;
   name: string;
   surname: string;
   birthDate: Date;
@@ -15,7 +15,7 @@ export interface Professor {
 }
 
 export interface Student {
-  studID: string;
+  studId: string;
   name: string;
   surname: string;
   birthDate: Date;
@@ -45,7 +45,16 @@ export class UsersService {
     });
   }
 
-  UpdateInfos(studInfos: { phoneNumber?: string; password?: string }): Observable<void> {
+  GetProfessorInfo(): Observable<Professor> {
+    const token = localStorage.getItem('jwt');
+    return this.http.get<Professor>(`${this.profUrl}/ViewProfessorInfo`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+  UpdateStudentInfos(studInfos: { phoneNumber?: string; password?: string }): Observable<void> {
     const token = localStorage.getItem('jwt');
 
     const headers = {
@@ -59,5 +68,21 @@ export class UsersService {
       { headers }
     );
   }
+
+  UpdateProfessorInfos(profInfos: { phoneNumber?: string; password?: string }): Observable<void> {
+    const token = localStorage.getItem('jwt');
+
+    const headers = {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    };
+
+    return this.http.put<void>(
+      `${this.profUrl}/UpdateProfessor`,
+      profInfos, // il body, es: { phoneNumber: '123', password: 'newpass' }
+      { headers }
+    );
+  }
+
 }
 

@@ -1,47 +1,91 @@
 <div class="main-container">
     <div class="personal-infos">
         <h1>Dati Personali</h1>
+        <!-- STUDENTE -->
         <div class="data-container row" *ngIf="student">
-            <p>
-                <strong>Nome</strong>
-                {{ student.name }}
-            </p>
-            <p>
-                <strong>Cognome</strong>
-                {{ student.surname }}
-            </p>
-            <p>
-                <strong>Data di nascita</strong>
-                {{ student.birthDate | date:'dd/MM/yyyy' }}
-            </p>
-            <p>
-                <strong>Numero di telefono</strong>
-                {{ student.phoneNumber }}
-            </p>
-            <p>
-                <strong>Email</strong>
-                {{ student.email }}
-            </p>
+            <p><strong>Nome</strong> {{ student.name }}</p>
+            <p><strong>Cognome</strong> {{ student.surname }}</p>
+            <p><strong>Data di nascita</strong> {{ student.birthDate | date:'dd/MM/yyyy' }}</p>
+            <p><strong>Numero di telefono</strong> {{ student.phoneNumber }}</p>
+            <p><strong>Email</strong> {{ student.email }}</p>
             <div class="btn-container" *ngIf="!isClicked">
                 <button class="formBtn" (click)="checkBtn()">Modifica dati</button>
             </div>
-
             <div class="data-container-input row" *ngIf="isClicked">
                 <div class="input-group">
                     <label for="phoneNumber">Nuovo numero di telefono</label>
                     <input type="text" name="phoneNumber" id="phoneNumber" [(ngModel)]="phoneNumberInput">
                 </div>
-
                 <div class="input-group">
                     <label for="password">Nuova password</label>
                     <input type="password" name="password" id="password" [(ngModel)]="passwordInput">
                 </div>
-
-                <button class="formBtn" (click)="applyChanges()">Conferma modifica</button>
+                <button class="formBtn" (click)="applyStudentChanges()">Conferma modifica</button>
+            </div>
+        </div>
+        <!-- PROFESSORE -->
+        <div class="data-container row" *ngIf="professor">
+            <p><strong>Nome</strong> {{ professor.name }}</p>
+            <p><strong>Cognome</strong> {{ professor.surname }}</p>
+            <p><strong>Data di nascita</strong> {{ professor.birthDate | date:'dd/MM/yyyy' }}</p>
+            <p><strong>Numero di telefono</strong> {{ professor.phoneNumber }}</p>
+            <p><strong>Email</strong> {{ professor.email }}</p>
+            <div class="btn-container" *ngIf="!isClicked">
+                <button class="formBtn" (click)="checkBtn()">Modifica dati</button>
+            </div>
+            <div class="data-container-input row" *ngIf="isClicked">
+                <div class="input-group">
+                    <label for="phoneNumber">Nuovo numero di telefono</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" [(ngModel)]="phoneNumberInput">
+                </div>
+                <div class="input-group">
+                    <label for="password">Nuova password</label>
+                    <input type="password" name="password" id="password" [(ngModel)]="passwordInput">
+                </div>
+                <button class="formBtn" (click)="applyProfessorChanges()">Conferma modifica</button>
             </div>
         </div>
     </div>
+
     <div class="career-infos">
         <h1>Riepilogo carriera</h1>
+        <!-- STUDENTE -->
+        <div class="data-container row" *ngIf="student">
+            <p>
+                <strong>Matricola</strong>
+                {{ student.studId }}
+            </p>
+            <!-- *ngFor="let dep of departments" e dep.name -->
+            <p>
+                <strong>Facoltà di appartenenza</strong>
+                {{ student.departmentId }}
+            </p>
+            <p>
+                <strong>Data di registrazione</strong>
+                {{ student.enrollmentDate | date:'dd/MM/yyyy'}}
+            </p>
+        </div>
+        <!-- PROFESSORE -->
+        <div class="data-container row" *ngIf="professor">
+            <p>
+                <strong>Codice identificativo</strong>
+                {{ professor.profId }}
+            </p>
+            <!-- *ngFor="let dep of departments" e dep.name -->
+            <p>
+                <strong>Facoltà di appartenenza</strong>
+                {{ professor.departmentId }}
+            </p>
+            <p>
+                <strong>Data di registrazione</strong>
+                {{ professor.enrollmentDate | date:'dd/MM/yyyy'}}
+            </p>
+        </div>
+        <h2>Esami futuri</h2>
+        <div class="data-container row" *ngIf="student">
+            <ul *ngFor="let exm of exams">
+                <li> {{exm.name}} - {{exm.cfu}} - {{exm.type}} - {{exm.date}} </li>
+            </ul>
+        </div>
     </div>
 </div>

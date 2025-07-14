@@ -1,1 +1,47 @@
-<p>study-plan works!</p>
+<div class="main-container">
+    <div class="intro">
+        <h1>PIANO CARRIERA</h1>
+        <p>Costruisci il tuo piano carriera aggiungendo corsi e laboratori</p>
+    </div>
+    <div class="courses-container">
+        <h2>Corsi</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Codice</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data Inizio</th>
+                    <th scope="col">Data Fine</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let cs of courses">
+                <tr>
+                    <th>{{cs.courseId}}</th>
+                    <th>{{cs.name}}</th>
+                    <th>{{cs.startDate}}</th>
+                    <th>{{cs.endDate}}</th>
+                    <th><button (click)="AddCourseToPlan(cs.courseId)">aggiungi</button></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="labs-container">
+        <h2>Laboratori</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Codice</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data Inizio</th>
+                    <th scope="col">Data Fine</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

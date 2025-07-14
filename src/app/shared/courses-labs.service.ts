@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Course {
+  courseId: string;
   name: string;
   startDate: string;
-  endDate: string;  
+  endDate: string;
   classrooms?: Classroom[];
 }
 export interface Laboratory {
@@ -36,6 +37,15 @@ export class CoursesLabsService {
 
   GetLabsByDepartment(depId: string): Observable<Laboratory[]> {
     return this.http.get<Laboratory[]>(`${this.labUrl}/GetLabsByDep/${depId}`);
+  }
+
+  GetCoursesByStudent(): Observable<Course[]> {
+    const token = localStorage.getItem('jwt');
+    return this.http.get<Course[]>(`${this.courseUrl}/DepCourses`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
   }
 
 }

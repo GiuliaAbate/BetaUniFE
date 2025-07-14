@@ -1,30 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { Student, UsersService } from '../../shared/users.service';
-import { SharedService } from '../../shared/shared.service';
+import { Professor, Student, UsersService } from '../../shared/users.service';
+import { Department, SharedService } from '../../shared/shared.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Exam, StudRegistrationsService } from '../../shared/stud-registrations.service';
 
 @Component({
   selector: 'app-profile-page',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css'
 })
 export class ProfilePageComponent implements OnInit {
 
   student: Student | null = null;
+  professor: Professor | null = null;
   public userRole: number = 0;
   isClicked: boolean = false;
   phoneNumberInput: string = '';
   passwordInput: string = '';
+  departments: Department[] = [];
+  exams : Exam[] = [];
 
-  constructor(private users: UsersService, private shared: SharedService) { }
+  constructor(private users: UsersService, private shared: SharedService, private register: StudRegistrationsService) { }
 
   ngOnInit(): void {
     this.shared.userRole.subscribe(role => {
       this.userRole = role;
     });
     this.GetStudentInfo();
+    this.GetProfessorInfo();
+    this.GetFutureExams();
   }
 
   GetStudentInfo() {
@@ -39,12 +45,35 @@ export class ProfilePageComponent implements OnInit {
     })
   }
 
+  GetProfessorInfo(){
+        this.users.GetProfessorInfo().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.professor = res;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
+  GetFutureExams() {
+    this.register.GetPlannedExams().subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+
   checkBtn() {
     this.isClicked = true;
   }
 
-  applyChanges() {
-    this.users.UpdateInfos({
+  applyStudentChanges() {
+    this.users.UpdateStudentInfos({
       phoneNumber: this.phoneNumberInput,
       password: this.passwordInput
     }).subscribe({
@@ -52,7 +81,21 @@ export class ProfilePageComponent implements OnInit {
         console.log('Dati aggiornati con successo');
       },
       error: (err) => {
-        console.error('Errore nell\'aggiornamento:', err);
+        console.error('Errore di aggiornamento:', err);
+      }
+    });
+  }
+
+  applyProfessorChanges() {
+    this.users.UpdateProfessorInfos({
+      phoneNumber: this.phoneNumberInput,
+      password: this.passwordInput
+    }).subscribe({
+      next: () => {
+        console.log('Dati aggiornati con successo');
+      },
+      error: (err) => {
+        console.error('Errore di aggiornamento:', err);
       }
     });
   }
