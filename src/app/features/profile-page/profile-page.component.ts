@@ -3,7 +3,8 @@ import { Professor, Student, UsersService } from '../../shared/users.service';
 import { Department, SharedService } from '../../shared/shared.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Exam, StudRegistrationsService } from '../../shared/stud-registrations.service';
+import { StudRegistrationsService } from '../../shared/stud-registrations.service';
+import { ExamInfos, ExamsService } from '../../shared/exams.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -20,9 +21,12 @@ export class ProfilePageComponent implements OnInit {
   phoneNumberInput: string = '';
   passwordInput: string = '';
   departments: Department[] = [];
-  exams : Exam[] = [];
+  exams : ExamInfos[] = [];
 
-  constructor(private users: UsersService, private shared: SharedService, private register: StudRegistrationsService) { }
+  constructor(
+    private users: UsersService,
+    private shared: SharedService,
+    private examSvc: ExamsService) { }
 
   ngOnInit(): void {
     this.shared.userRole.subscribe(role => {
@@ -58,9 +62,10 @@ export class ProfilePageComponent implements OnInit {
   }
 
   GetFutureExams() {
-    this.register.GetPlannedExams().subscribe({
+    this.examSvc.GetPlannedExams().subscribe({
       next: (res) => {
         console.log(res);
+        this.exams = res;
       },
       error: (err) => {
         console.error(err);
