@@ -37,7 +37,7 @@ export class SharedService {
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
     this.userRoleSubject.next(0);
-    // this.route.navigate(['/homepage']);
+    this.route.navigate(['/homepage']);
   }
 
   //metodo per prendere ruolo subito

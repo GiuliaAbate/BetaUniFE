@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Course } from './courses-labs.service';
+import { Course, Laboratory } from './courses-labs.service';
 
 export interface Exam {
   examId: number;
@@ -31,6 +31,7 @@ export class StudRegistrationsService {
 
   private regUrl = 'https://localhost:7129/api/ExamRegistrations';
   private courseRegUrl = 'https://localhost:7129/api/StudentCourses';
+    private labRegUrl = 'https://localhost:7129/api/StudentLabs';
 
   GetPlannedExams(): Observable<Exam> {
     const token = localStorage.getItem('jwt');
@@ -50,7 +51,21 @@ export class StudRegistrationsService {
     };
 
     return this.http.post<Course[]>(`${this.courseRegUrl}/CourseRegistration/${courseId}`,
-      {} , {headers}
+      {}, { headers }
     );
   }
+
+  AddLabs(labId: number): Observable<Laboratory[]> {
+    const token = localStorage.getItem('jwt');
+
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    };
+
+    return this.http.post<Laboratory[]>(`${this.labRegUrl}/LabRegistration/${labId}`,
+      {}, { headers }
+    );
+  }
+
 }

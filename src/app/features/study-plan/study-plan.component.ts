@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Course, CoursesLabsService } from '../../shared/courses-labs.service';
+import { Course, CoursesLabsService, Laboratory } from '../../shared/courses-labs.service';
 import { StudRegistrationsService } from '../../shared/stud-registrations.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +14,7 @@ import { SharedService } from '../../shared/shared.service';
 export class StudyPlanComponent implements OnInit {
 
   public courses: Course[] = [];
+  public labs: Laboratory[] = [];
   public userRole: number = 0;
 
   constructor(
@@ -27,6 +28,7 @@ export class StudyPlanComponent implements OnInit {
       this.userRole = role;
     });
     this.GetCoursesList();
+    this.GetLabsList();
   }
 
   GetCoursesList() {
@@ -41,15 +43,40 @@ export class StudyPlanComponent implements OnInit {
     });
   }
 
+  GetLabsList() {
+    this.CoursesLabs.GetLabsByStudent().subscribe({
+      next: (res) => {
+        this.labs = res;
+        console.log(this.courses);
+      },
+      error: (err) => {
+        console.error('Errore di aggiornamento:', err);
+      }
+    });
+  }
+
   AddCourseToPlan(id: string) {
     this.studRegs.AddCourses(id).subscribe({
       next: (res) => {
         console.log(res);
       },
       error: (err) => {
-        console.error('Errore di aggiornamento:', err);
+        window.alert("Hai già aggiunto il laboratorio");
+        console.log(err);
       }
-    })
+    });
+  }
+
+  AddLabToPlan(id: number) {
+    this.studRegs.AddLabs(id).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        window.alert("Hai già aggiunto il laboratorio")
+        console.log(err);
+      }
+    });
   }
 
 }

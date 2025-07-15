@@ -5,13 +5,19 @@ import { Observable } from 'rxjs';
 export interface Course {
   courseId: string;
   name: string;
+  departmentId: string;
   startDate: string;
   endDate: string;
   classrooms?: Classroom[];
 }
 export interface Laboratory {
+  labId: number;
   name: string;
   attendance: boolean;
+  departmentId: string;
+  startDate: string;
+  endDate: string;
+  classrooms?: Classroom[];
 }
 
 export interface Classroom {
@@ -42,6 +48,15 @@ export class CoursesLabsService {
   GetCoursesByStudent(): Observable<Course[]> {
     const token = localStorage.getItem('jwt');
     return this.http.get<Course[]>(`${this.courseUrl}/DepCourses`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+  GetLabsByStudent(): Observable<Laboratory[]> {
+    const token = localStorage.getItem('jwt');
+    return this.http.get<Laboratory[]>(`${this.labUrl}/DepLabs`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

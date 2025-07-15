@@ -33,13 +33,19 @@
                 <tr>
                     <th scope="col">Codice</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Frequenza</th>
                     <th scope="col">Data Inizio</th>
                     <th scope="col">Data Fine</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let lab of labs">
                 <tr>
-                    <th></th>
+                    <th>{{lab.labId}}</th>
+                    <th>{{lab.name}}</th>
+                    <th>{{lab.attendance ? 'Obbligatoria' : 'Facoltativa'}}</th>
+                    <th>{{lab.startDate}}</th>
+                    <th>{{lab.endDate}}</th>
+                    <th><button (click)="AddLabToPlan(lab.labId)">aggiungi</button></th>
                 </tr>
             </tbody>
         </table>
