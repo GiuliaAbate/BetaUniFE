@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Course, CoursesLabsService, Laboratory } from '../../shared/courses-labs.service';
-import { StudRegistrationsService } from '../../shared/stud-registrations.service';
+import { Course, CoursesLabsService, Laboratory } from '../../../shared/courses-labs.service';
+import { StudRegistrationsService } from '../../../shared/stud-registrations.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SharedService } from '../../shared/shared.service';
+import { SharedService } from '../../../shared/shared.service';
 
 @Component({
   selector: 'app-study-plan',

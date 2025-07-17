@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Classroom, Course, CoursesLabsService, Laboratory } from '../../shared/courses-labs.service';
+
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Department, SharedService } from '../../shared/shared.service';
+import { Department, SharedService } from '../../../shared/shared.service';
+import { Classroom, Course, CoursesLabsService, Laboratory } from '../../../shared/courses-labs.service';
+
 
 @Component({
   selector: 'app-dep-details',

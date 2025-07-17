@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Laboratory } from '../../shared/courses-labs.service';
-import { StudRegistrationsService } from '../../shared/stud-registrations.service';
-import { SharedService } from '../../shared/shared.service';
+import { Laboratory } from '../../../shared/courses-labs.service';
+import { StudRegistrationsService } from '../../../shared/stud-registrations.service';
+import { SharedService } from '../../../shared/shared.service';
 
 @Component({
   selector: 'app-laboratories',

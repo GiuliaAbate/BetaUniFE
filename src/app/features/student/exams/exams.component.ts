@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ExamInfos, ExamsService, } from '../../shared/exams.service';
-import { SharedService } from '../../shared/shared.service';
+import { ExamInfos, ExamsService, } from '../../../shared/exams.service';
+import { SharedService } from '../../../shared/shared.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
