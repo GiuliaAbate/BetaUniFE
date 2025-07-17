@@ -53,4 +53,13 @@ export class ExamsService {
       }
     });
   }
+
+  GetExams(): Observable<ExamInfos[]> {
+    const token = localStorage.getItem('jwt');
+    return this.http.get<ExamInfos[]>(`${this.regUrl}/ExamsByStudent`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
 }

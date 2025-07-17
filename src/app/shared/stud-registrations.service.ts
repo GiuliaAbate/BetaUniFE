@@ -3,24 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course, Laboratory } from './courses-labs.service';
 
-// export interface Exam {
-//   examId: number;
-//   name: string;
-//   cfu: number;
-//   type: string;
-//   date: Date;
-//   courseId: string;
-//   departmentId: string;
-// }
 
-// export interface ExamRegistration {
-//   id: number;
-//   studId: string;
-//   examId: number;
-//   courseId: string;
-//   departmentId: string;
-//   registrationDate: Date;
-// }
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +13,7 @@ export class StudRegistrationsService {
   constructor(private http: HttpClient) { }
 
   private courseRegUrl = 'https://localhost:7129/api/StudentCourses';
-    private labRegUrl = 'https://localhost:7129/api/StudentLabs';
+  private labRegUrl = 'https://localhost:7129/api/StudentLabs';
 
   AddCourses(courseId: string): Observable<Course[]> {
     const token = localStorage.getItem('jwt');
@@ -56,6 +39,27 @@ export class StudRegistrationsService {
     return this.http.post<Laboratory[]>(`${this.labRegUrl}/LabRegistration/${labId}`,
       {}, { headers }
     );
+  }
+
+  GetCourses(): Observable<Course[]> {
+    const token = localStorage.getItem('jwt');
+
+    return this.http.get<Course[]>(`${this.courseRegUrl}/CoursesByStudent`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+  }
+
+  GetLabs(): Observable<Laboratory[]> {
+    const token = localStorage.getItem('jwt');
+
+    return this.http.get<Laboratory[]>(`${this.labRegUrl}/LabsByStudent`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
   }
 
 }

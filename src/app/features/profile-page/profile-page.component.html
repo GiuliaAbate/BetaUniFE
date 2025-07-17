@@ -82,9 +82,12 @@
             </p>
         </div>
         <h2>Esami futuri</h2>
-        <div class="data-container row" *ngIf="student">
-            <ul *ngFor="let exm of exams">
-                <li> {{exm.name}} - {{exm.cfu}} - {{exm.type}} - {{exm.date}} </li>
+        <div class="future-exams data-container row" *ngIf="student">
+            <ul>
+                <li *ngFor="let exm of exams">
+                    <span class="exam-name">{{exm.name}}</span>
+                    <span class="exam-info">{{exm.cfu}} CFU • {{exm.type}} • {{exm.date}}</span>
+                </li>
             </ul>
         </div>
     </div>

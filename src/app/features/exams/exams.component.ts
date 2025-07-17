@@ -17,13 +17,14 @@ export class ExamsComponent implements OnInit {
   constructor(
     private examService: ExamsService,
     private shared: SharedService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.shared.userRole.subscribe(role => {
       this.userRole = role;
     });
     this.GetExamsList();
+    this.GetStudentExams();
   }
 
   GetExamsList() {
@@ -38,13 +39,24 @@ export class ExamsComponent implements OnInit {
     });
   }
 
-  RegisterToExam(id:number){
+  RegisterToExam(id: number) {
     this.examService.ExamRegistration(id).subscribe({
       next: (res) => {
         console.log(res);
       },
       error: (err) => {
         // window.alert("Ti sei già iscritto all'esame");
+        console.log(err);
+      }
+    })
+  }
+
+  GetStudentExams() {
+    this.examService.GetExams().subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
         console.log(err);
       }
     })

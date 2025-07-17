@@ -99,3 +99,46 @@
 .btn-container button {
     margin: 10px;
 }
+
+h2{
+    margin-top: 10px;
+}
+
+.future-exams {
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #2c3e50;
+}
+
+.future-exams ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.future-exams li {
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.5rem;
+    border-left: 4px solid var(--primary-color);
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    border-right: 1px solid var(--primary-color);
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.future-exams li:hover {
+    background-color: #e5acac68;
+}
+
+.exam-name {
+    font-weight: 600;
+    display: block;
+    color: var(--secondary-color);
+}
+
+.exam-info {
+    font-size: 0.85rem;
+    color: #000000;
+}

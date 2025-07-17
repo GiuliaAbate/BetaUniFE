@@ -5,7 +5,7 @@
     </div>
     <div class="courses-container">
         <h2>Corsi</h2>
-        <table class="table">
+        <table>
             <thead>
                 <tr>
                     <th scope="col">Codice</th>
@@ -15,20 +15,20 @@
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody *ngFor="let cs of courses">
-                <tr>
-                    <th>{{cs.courseId}}</th>
-                    <th>{{cs.name}}</th>
-                    <th>{{cs.startDate}}</th>
-                    <th>{{cs.endDate}}</th>
-                    <th><button (click)="AddCourseToPlan(cs.courseId)">aggiungi</button></th>
+            <tbody>
+                <tr *ngFor="let cs of courses">
+                    <td>{{cs.courseId}}</td>
+                    <td>{{cs.name}}</td>
+                    <td>{{cs.startDate}}</td>
+                    <td>{{cs.endDate}}</td>
+                    <td><button class="formBtn" (click)="AddCourseToPlan(cs.courseId)">Aggiungi</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="labs-container">
         <h2>Laboratori</h2>
-        <table class="table">
+        <table>
             <thead>
                 <tr>
                     <th scope="col">Codice</th>
@@ -36,16 +36,17 @@
                     <th scope="col">Frequenza</th>
                     <th scope="col">Data Inizio</th>
                     <th scope="col">Data Fine</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody *ngFor="let lab of labs">
-                <tr>
-                    <th>{{lab.labId}}</th>
-                    <th>{{lab.name}}</th>
-                    <th>{{lab.attendance ? 'Obbligatoria' : 'Facoltativa'}}</th>
-                    <th>{{lab.startDate}}</th>
-                    <th>{{lab.endDate}}</th>
-                    <th><button (click)="AddLabToPlan(lab.labId)">aggiungi</button></th>
+            <tbody>
+                <tr *ngFor="let lab of labs">
+                    <td>{{lab.labId}}</td>
+                    <td>{{lab.name}}</td>
+                    <td>{{lab.attendance ? 'Obbligatoria' : 'Facoltativa'}}</td>
+                    <td>{{lab.startDate}}</td>
+                    <td>{{lab.endDate}}</td>
+                    <td><button class="formBtn" (click)="AddLabToPlan(lab.labId)">Aggiungi</button></td>
                 </tr>
             </tbody>
         </table>

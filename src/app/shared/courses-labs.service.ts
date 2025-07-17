@@ -7,9 +7,11 @@ export interface Course {
   name: string;
   departmentId: string;
   startDate: string;
-  endDate: string;
+  endDate: string; 
+  professorSurname: string;
   classrooms?: Classroom[];
 }
+
 export interface Laboratory {
   labId: number;
   name: string;
@@ -17,7 +19,9 @@ export interface Laboratory {
   departmentId: string;
   startDate: string;
   endDate: string;
+  professorSurname: string;
   classrooms?: Classroom[];
+  
 }
 
 export interface Classroom {
@@ -62,5 +66,6 @@ export class CoursesLabsService {
       }
     });
   }
+
 
 }

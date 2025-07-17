@@ -4,7 +4,7 @@
         <p>Iscriviti agli esami disponibili</p>
     </div>
     <div class="exam-container">
-        <table class="table">
+        <table>
             <thead>
                 <tr>
                     <th scope="col">Codice</th>
@@ -17,23 +17,32 @@
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody >
+            <tbody>
                 <tr *ngFor="let ex of exams">
-                    <th>{{ex.examId}}</th>
-                    <th>{{ex.name}}</th>
-                    <th>{{ex.cfu}}</th>
-                    <th>{{ex.type}}</th>
-                    <th>{{ex.courseId}}</th>
-                    <th>{{ex.ProfessorSurname}}</th>
-                    <th>{{ex.date}}</th>
-                    <th><button (click)="RegisterToExam(ex.examId)">aggiungi</button></th>
+                    <td>{{ex.examId}}</td>
+                    <td>{{ex.name}}</td>
+                    <td>{{ex.cfu}}</td>
+                    <td>{{ex.type}}</td>
+                    <td>{{ex.courseId}}</td>
+                    <td>{{ex.ProfessorSurname}}</td>
+                    <td>{{ex.date}}</td>
+                    <td><button class="formBtn" (click)="RegisterToExam(ex.examId)">Iscriviti</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <div class="exams-list">
-        <h2>I tuoi esami</h2>
+    <div class="sub-container">
+        <h2>I miei esami</h2>
+        <div class="exams-list">
+            <div class="exam-card" *ngFor="let ex of exams">
+                <p><strong>Nome:</strong> {{ex.name}}</p>
+                <p><strong>CFU:</strong> {{ex.cfu}}</p>
+                <p><strong>Tipologia:</strong> {{ex.type}}</p>
+                <p><strong>Corso:</strong> {{ex.courseId}}</p>
+                <p><strong>Professore:</strong> {{ex.ProfessorSurname}}</p>
+                <p><strong>Data:</strong> {{ex.date}}</p>
+            </div>
+        </div>
     </div>
 </div>
-
