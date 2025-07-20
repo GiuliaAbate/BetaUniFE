@@ -21,7 +21,7 @@ export class SigninService {
   }
 
   isUserLogged() {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
     return this.http.get('/api/Login/IsUserLogged', {
       headers: { Authorization: `Bearer ${token}` }
     });

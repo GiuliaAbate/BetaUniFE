@@ -16,7 +16,7 @@ export class StudRegistrationsService {
   private labRegUrl = 'https://localhost:7129/api/StudentLabs';
 
   AddCourses(courseId: string): Observable<Course[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
 
     const headers = {
       Authorization: `Bearer ${token}`,
@@ -29,7 +29,7 @@ export class StudRegistrationsService {
   }
 
   AddLabs(labId: number): Observable<Laboratory[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
 
     const headers = {
       Authorization: `Bearer ${token}`,
@@ -42,7 +42,7 @@ export class StudRegistrationsService {
   }
 
   GetCourses(): Observable<Course[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
 
     return this.http.get<Course[]>(`${this.courseRegUrl}/CoursesByStudent`, {
       headers: {
@@ -53,7 +53,7 @@ export class StudRegistrationsService {
   }
 
   GetLabs(): Observable<Laboratory[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
 
     return this.http.get<Laboratory[]>(`${this.labRegUrl}/LabsByStudent`, {
       headers: {

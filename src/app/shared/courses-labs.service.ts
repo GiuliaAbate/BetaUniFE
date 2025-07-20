@@ -50,7 +50,7 @@ export class CoursesLabsService {
   }
 
   GetCoursesByStudent(): Observable<Course[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
     return this.http.get<Course[]>(`${this.courseUrl}/DepCourses`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -59,7 +59,7 @@ export class CoursesLabsService {
   }
 
   GetLabsByStudent(): Observable<Laboratory[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
     return this.http.get<Laboratory[]>(`${this.labUrl}/DepLabs`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -68,7 +68,7 @@ export class CoursesLabsService {
   }
 
     GetLabsByProfessor(): Observable<Laboratory[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
     return this.http.get<Laboratory[]>(`${this.labUrl}/ProfDepLabs`, {
       headers: {
         Authorization: `Bearer ${token}`

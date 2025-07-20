@@ -24,7 +24,7 @@ export class ExamsService {
   private regUrl = 'https://localhost:7129/api/ExamRegistrations';
 
   GetExamsInfos(): Observable<ExamInfos[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
     return this.http.get<ExamInfos[]>(`${this.apiUrl}/GetExamsInfo`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -33,7 +33,7 @@ export class ExamsService {
   }
 
   ExamRegistration(examId: number): Observable<ExamInfos[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
 
     const headers = {
       Authorization: `Bearer ${token}`,
@@ -46,7 +46,7 @@ export class ExamsService {
   }
 
   GetPlannedExams(): Observable<ExamInfos[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
     return this.http.get<ExamInfos[]>(`${this.regUrl}/FutureExams`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -55,7 +55,7 @@ export class ExamsService {
   }
   
   GetExams(): Observable<ExamInfos[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
     return this.http.get<ExamInfos[]>(`${this.regUrl}/ExamsByStudent`, {
       headers: {
         Authorization: `Bearer ${token}`

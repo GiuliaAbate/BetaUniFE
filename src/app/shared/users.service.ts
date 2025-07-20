@@ -37,7 +37,7 @@ export class UsersService {
   private profUrl = 'https://localhost:7129/api/Professors';
 
   GetStudentInfo(): Observable<Student> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
     return this.http.get<Student>(`${this.studUrl}/ViewStudentInfo`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -46,7 +46,7 @@ export class UsersService {
   }
 
   GetProfessorInfo(): Observable<Professor> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
     return this.http.get<Professor>(`${this.profUrl}/ViewProfessorInfo`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -55,7 +55,7 @@ export class UsersService {
   }
 
   UpdateStudentInfos(studInfos: { phoneNumber?: string; password?: string }): Observable<void> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
 
     const headers = {
       'Authorization': `Bearer ${token}`,
@@ -70,7 +70,7 @@ export class UsersService {
   }
 
   UpdateProfessorInfos(profInfos: { phoneNumber?: string; password?: string }): Observable<void> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
 
     const headers = {
       'Authorization': `Bearer ${token}`,

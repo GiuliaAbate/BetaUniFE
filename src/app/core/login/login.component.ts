@@ -29,7 +29,7 @@ export class LoginComponent {
     if (this.role == 'student') {
       this.signIn.StudentLogin(email, password).subscribe({
         next: (res) => {
-          localStorage.setItem('jwt', res.token);
+          sessionStorage.setItem('jwt', res.token);
           this.shared.SetUserRole(1);
           this.route.navigate(['/homepage']);
         },
@@ -40,7 +40,7 @@ export class LoginComponent {
     } else if (this.role == 'professor') {
       this.signIn.ProfessorLogin(email, password).subscribe({
         next: (res) => {
-          localStorage.setItem('jwt', res.token);
+          sessionStorage.setItem('jwt', res.token);
           this.shared.SetUserRole(2);
           this.route.navigate(['/homepage']);
         },

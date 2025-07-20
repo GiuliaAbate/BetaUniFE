@@ -34,20 +34,20 @@ export class SharedService {
 
   //Metodo per logout
   Logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userRole');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('userRole');
     this.userRoleSubject.next(0);
     this.route.navigate(['/homepage']);
   }
 
   //metodo per prendere ruolo subito
   GetInitialUserRole(): number {
-    const role = localStorage.getItem('userRole');
+    const role = sessionStorage.getItem('userRole');
     return role ? parseInt(role) : 0;
   }
 
   SetUserRole(role: number) {
-    localStorage.setItem('userRole', role.toString());
+    sessionStorage.setItem('userRole', role.toString());
     this.userRoleSubject.next(role);
   }
 

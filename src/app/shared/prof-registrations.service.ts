@@ -28,7 +28,7 @@ export class ProfRegistrationsService {
   private regUrl = 'https://localhost:7129/api/ProfCourseExams';
 
   GetCourseExam(): Observable<CourseExamInfo[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
 
     return this.http.get<CourseExamInfo[]>(`${this.courseUrl}/ProfDepCoursesExams`, {
       headers: {
@@ -38,7 +38,7 @@ export class ProfRegistrationsService {
   }
 
   AddCourseExam(courseId: string, examId: number) {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
 
     const headers = {
       Authorization: `Bearer ${token}`,
@@ -51,7 +51,7 @@ export class ProfRegistrationsService {
   }
 
   GetProfPlannedExams(): Observable<ExamInfos[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
     return this.http.get<ExamInfos[]>(`${this.regUrl}/ProfFutureExams`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -60,7 +60,7 @@ export class ProfRegistrationsService {
   }
 
   AddLab(labId: number) : Observable<Laboratory[]> {
-    const token = localStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt');
 
         const headers = {
       Authorization: `Bearer ${token}`,
