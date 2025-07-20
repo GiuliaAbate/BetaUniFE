@@ -8,7 +8,7 @@ export interface ExamInfos {
   cfu: number;
   type: string;
   courseId: string;
-  ProfessorSurname: string | null;
+  professorSurname: string | null;
   date: Date;
 }
 
@@ -53,7 +53,7 @@ export class ExamsService {
       }
     });
   }
-
+  
   GetExams(): Observable<ExamInfos[]> {
     const token = localStorage.getItem('jwt');
     return this.http.get<ExamInfos[]>(`${this.regUrl}/ExamsByStudent`, {

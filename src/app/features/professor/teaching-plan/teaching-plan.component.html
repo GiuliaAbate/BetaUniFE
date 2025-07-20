@@ -1,1 +1,57 @@
-<p>teaching-plan works!</p>
+<div class="intro">
+    <h1>Piano didattico</h1>
+    <p>Costruisci il tuo piano didattico aggiungendo i corsi/esami e laboratori a cui insegnare</p>
+
+    <div class="courses-container">
+        <h2>Corsi/Esami</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Codice corso</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CFU</th>
+                    <th scope="col">Tipologia</th>                    
+                    <th scope="col">Data Inizio</th> 
+                    <th scope="col">Data Fine</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ce of courseExam">
+                    <td>{{ce.courseId}}</td>
+                    <td>{{ce.courseName}}</td>
+                    <td>{{ce.cfu}}</td>
+                    <td>{{ce.type}}</td>
+                    <td>{{ce.startDate}}</td>
+                    <td>{{ce.endDate}}</td>
+                    <td><button class="formBtn" (click)="AddCourseExam(ce.courseId,ce.examId)">Aggiungi</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="labs-container">
+        <h2>Laboratori</h2>
+        <table>
+            <thead>
+                <tr> 
+                    <th scope="col">Codice</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Frequenza</th>
+                    <th scope="col">Data Inizio</th>
+                    <th scope="col">Data Fine</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let lab of labs">
+                    <td>{{lab.labId}}</td>
+                    <td>{{lab.name}}</td>
+                    <td>{{lab.attendance ? 'Obbligatoria' : 'Facoltativa'}}</td>
+                    <td>{{lab.startDate}}</td>
+                    <td>{{lab.endDate}}</td>
+                    <td><button class="formBtn" (click)="AddLab(lab.labId)">Aggiungi</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>  

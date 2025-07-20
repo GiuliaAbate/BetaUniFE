@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { StudRegistrationsService } from '../../shared/stud-registrations.service';
 import { ExamInfos, ExamsService } from '../../shared/exams.service';
+import { ProfRegistrationsService } from '../../shared/prof-registrations.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -21,12 +22,14 @@ export class ProfilePageComponent implements OnInit {
   phoneNumberInput: string = '';
   passwordInput: string = '';
   departments: Department[] = [];
-  exams : ExamInfos[] = [];
+  exams: ExamInfos[] = [];
 
   constructor(
     private users: UsersService,
     private shared: SharedService,
-    private examSvc: ExamsService) { }
+    private examSvc: ExamsService,
+    private profReg: ProfRegistrationsService
+  ) { }
 
   ngOnInit(): void {
     this.shared.userRole.subscribe(role => {
@@ -35,6 +38,7 @@ export class ProfilePageComponent implements OnInit {
     this.GetStudentInfo();
     this.GetProfessorInfo();
     this.GetFutureExams();
+    this.GetProfFutureExams();
   }
 
   GetStudentInfo() {
@@ -49,8 +53,8 @@ export class ProfilePageComponent implements OnInit {
     })
   }
 
-  GetProfessorInfo(){
-        this.users.GetProfessorInfo().subscribe({
+  GetProfessorInfo() {
+    this.users.GetProfessorInfo().subscribe({
       next: (res) => {
         console.log(res);
         this.professor = res;
@@ -63,6 +67,18 @@ export class ProfilePageComponent implements OnInit {
 
   GetFutureExams() {
     this.examSvc.GetPlannedExams().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.exams = res;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+
+  GetProfFutureExams() {
+    this.profReg.GetProfPlannedExams().subscribe({
       next: (res) => {
         console.log(res);
         this.exams = res;

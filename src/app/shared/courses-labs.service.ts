@@ -67,5 +67,14 @@ export class CoursesLabsService {
     });
   }
 
+    GetLabsByProfessor(): Observable<Laboratory[]> {
+    const token = localStorage.getItem('jwt');
+    return this.http.get<Laboratory[]>(`${this.labUrl}/ProfDepLabs`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
 
 }

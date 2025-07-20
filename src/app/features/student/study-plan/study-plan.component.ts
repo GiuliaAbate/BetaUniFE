@@ -35,7 +35,7 @@ export class StudyPlanComponent implements OnInit {
     this.CoursesLabs.GetCoursesByStudent().subscribe({
       next: (res) => {
         this.courses = res;
-        console.log(this.courses);
+        console.log(res);
       },
       error: (err) => {
         console.error('Errore di aggiornamento:', err);
@@ -47,7 +47,7 @@ export class StudyPlanComponent implements OnInit {
     this.CoursesLabs.GetLabsByStudent().subscribe({
       next: (res) => {
         this.labs = res;
-        console.log(this.courses);
+        console.log(this.labs);
       },
       error: (err) => {
         console.error('Errore di aggiornamento:', err);
