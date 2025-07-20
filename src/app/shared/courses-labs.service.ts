@@ -3,23 +3,25 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Course {
+  id : number;
   courseId: string;
   name: string;
   departmentId: string;
   startDate: string;
   endDate: string; 
-  professorSurname: string;
+  profFullName: string;
   classrooms?: Classroom[];
 }
 
 export interface Laboratory {
+  id: number;
   labId: number;
   name: string;
   attendance: boolean;
   departmentId: string;
   startDate: string;
   endDate: string;
-  professorSurname: string;
+  profFullName: string;
   classrooms?: Classroom[];
   
 }
@@ -30,6 +32,7 @@ export interface Classroom {
   maxCapacity: number;
   courseId: string;
 }
+
 
 @Injectable({
   providedIn: 'root'

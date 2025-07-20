@@ -12,7 +12,7 @@
                     <th scope="col">CFU</th>
                     <th scope="col">Tipologia</th>
                     <th scope="col">Corso di appartenenza</th>
-                    <th scope="col">Professore</th>
+                    <th scope="col">Docente</th>
                     <th scope="col">Data</th>
                     <th scope="col"></th>
                 </tr>
@@ -24,7 +24,7 @@
                     <td>{{ex.cfu}}</td>
                     <td>{{ex.type}}</td>
                     <td>{{ex.courseId}}</td>
-                    <td>{{ex.professorSurname}}</td>
+                    <td>{{ex.profFullName || "Docente non assegnato"}}</td>
                     <td>{{ex.date}}</td>
                     <td><button class="formBtn" (click)="RegisterToExam(ex.examId)">Iscriviti</button></td>
                 </tr>
@@ -40,7 +40,7 @@
                 <p><strong>CFU:</strong> {{ex.cfu}}</p>
                 <p><strong>Tipologia:</strong> {{ex.type}}</p>
                 <p><strong>Corso:</strong> {{ex.courseId}}</p>
-                <p><strong>Docente:</strong> {{ex.professorSurname}}</p>
+                <p><strong>Docente:</strong> {{ex.profFullName || "Docente non assegnato"}}</p>
                 <p><strong>Data:</strong> {{ex.date}}</p>
             </div>
         </div>

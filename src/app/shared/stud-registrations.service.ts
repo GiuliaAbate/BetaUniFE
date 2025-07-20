@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Course, Laboratory } from './courses-labs.service';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -60,6 +59,32 @@ export class StudRegistrationsService {
         Authorization: `Bearer ${token}`
       }
     });
+  }
+
+  DeleteCourseReg(id: number): Observable<Course[]> {
+    const token = sessionStorage.getItem('jwt');
+
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    };
+
+    return this.http.delete<Course[]>(`${this.courseRegUrl}/CourseUnsubscribe/${id}`,
+      { headers }
+    );
+  }
+
+  DeleteLabReg(id: number): Observable<Laboratory[]> {
+    const token = sessionStorage.getItem('jwt');
+
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    };
+
+    return this.http.delete<Laboratory[]>(`${this.labRegUrl}/LabUnsubscribe/${id}`,
+      { headers }
+    );
   }
 
 }

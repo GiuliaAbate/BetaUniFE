@@ -8,7 +8,7 @@ export interface ExamInfos {
   cfu: number;
   type: string;
   courseId: string;
-  professorSurname: string | null;
+  profFullName: string | null;
   date: Date;
 }
 
