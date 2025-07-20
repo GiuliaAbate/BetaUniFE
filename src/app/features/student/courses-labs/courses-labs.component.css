@@ -7,7 +7,7 @@
 }
 
 
-.labs-card {
+.courses-card, .labs-card {
     margin: 25px;
     width: 80%;
     background-color: var(--background-color);
@@ -19,15 +19,15 @@
     transition: transform 0.2s ease;
 }
 
-.labs-card:hover {
+.courses-card:hover,.labs-card:hover {
     transform: scale(1.01);
 }
 
-.labs-card p {
+.courses-card p, .labs-card p {
     margin: 0.3rem 0;
     color: var(--text-color);
 }
 
-.labs-card strong {
+.courses-card strong, .labs-card strong {
     color: var(--tertiary-color);
 }

@@ -39,8 +39,7 @@ export class NavbarComponent implements OnInit {
     } else if (this.userRole == 1) {
       this.navItems = [
         {label: "Piano Carriera", route: "/studyPlan"},
-        {label: "Corsi", route: "/courses"},
-        {label: "Laboratori", route: "/laboratories"},
+        {label: "Corsi e Laboratori", route: "/courses-labs"},
         {label: "Esami", route: "/exams"},
       ];
     } else if (this.userRole == 2) {

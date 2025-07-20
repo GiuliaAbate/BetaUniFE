@@ -1,0 +1,19 @@
+<div class="main-container">
+    <div class="courses-container">
+        <h1>I MIEI CORSI</h1>
+        <div class="courses-card" *ngFor="let cs of courses">
+            <p><strong>Codice corso:</strong> {{cs.courseId}} </p>
+            <p><strong>Nome:</strong> {{cs.name}} </p>
+            <p><strong>Data inizio:</strong> {{cs.startDate}} </p>
+            <p><strong>Data fine:</strong> {{cs.endDate}} </p>
+            <p><strong>Aula:</strong> {{cs.classrooms}} </p>
+            <p><strong>Docente:</strong> {{cs.professorSurname}} </p>
+        </div>
+    </div>
+
+    <div class="labs-container">
+        <h1>I MIEI LABORATORI</h1>
+        <div class="labs-card" *ngFor="let lab of labs">
+        </div>
+    </div>
+</div>

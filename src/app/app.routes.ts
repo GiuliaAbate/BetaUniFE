@@ -7,8 +7,7 @@ import { LoginComponent } from './core/login/login.component';
 import { RegistrationComponent } from './core/registration/registration.component';
 import { ProfilePageComponent } from './features/profile-page/profile-page.component';
 import { StudyPlanComponent } from './features/student/study-plan/study-plan.component';
-import { CoursesComponent } from './features/student/courses/courses.component';
-import { LaboratoriesComponent } from './features/student/laboratories/laboratories.component';
+import {CoursesLabsComponent } from './features/student/courses-labs/courses-labs.component';
 import { ExamsComponent } from './features/student/exams/exams.component';
 import { DepDetailsComponent } from './features/guest/dep-details/dep-details.component';
 import { TeachingPlanComponent } from './features/professor/teaching-plan/teaching-plan.component';
@@ -55,12 +54,8 @@ export const routes: Routes = [
         component: StudyPlanComponent
     },
     {
-        path: "courses",
-        component: CoursesComponent
-    },
-    {
-        path: "laboratories",
-        component: LaboratoriesComponent
+        path: "courses-labs",
+        component: CoursesLabsComponent
     },
     {
         path: "exams",

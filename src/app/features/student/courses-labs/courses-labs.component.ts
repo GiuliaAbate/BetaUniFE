@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Laboratory } from '../../../shared/courses-labs.service';
+import { Course, Laboratory } from '../../../shared/courses-labs.service';
 import { StudRegistrationsService } from '../../../shared/stud-registrations.service';
 import { SharedService } from '../../../shared/shared.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-laboratories',
-  imports: [],
-  templateUrl: './laboratories.component.html',
-  styleUrl: './laboratories.component.css'
+  selector: 'app-courses',
+  imports: [CommonModule],
+  templateUrl: './courses-labs.component.html',
+  styleUrl: './courses-labs.component.css'
 })
-export class LaboratoriesComponent implements OnInit {
+export class CoursesLabsComponent implements OnInit {
 
-
+  public courses: Course[] = [];
   public labs: Laboratory[] = [];
   public userRole: number = 0;
 
@@ -25,10 +26,23 @@ export class LaboratoriesComponent implements OnInit {
       this.userRole = role;
     });
 
+    this.GetStudentCourses();
     this.GetStudentLabs();
   }
 
-  GetStudentLabs(){
+  GetStudentCourses() {
+    this.studRegSVC.GetCourses().subscribe({
+      next: (res) => {
+        this.courses = res;
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  GetStudentLabs() {
     this.studRegSVC.GetLabs().subscribe({
       next: (res) => {
         this.labs = res;
