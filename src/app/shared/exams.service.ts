@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface ExamInfos {
+  id: number;
   examId: number;
   name: string;
   cfu: number;
@@ -53,7 +54,7 @@ export class ExamsService {
       }
     });
   }
-  
+
   GetExams(): Observable<ExamInfos[]> {
     const token = sessionStorage.getItem('jwt');
     return this.http.get<ExamInfos[]>(`${this.regUrl}/ExamsByStudent`, {
@@ -61,5 +62,16 @@ export class ExamsService {
         Authorization: `Bearer ${token}`
       }
     });
+  }
+
+  DeleteExamReg(id: number): Observable<any> {
+    const token = sessionStorage.getItem('jwt');
+
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    };
+
+    return this.http.delete(`${this.regUrl}/ExamUnsubscribe/${id}`, { headers });
   }
 }

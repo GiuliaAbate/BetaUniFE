@@ -26,7 +26,11 @@
                     <td>{{ex.courseId}}</td>
                     <td>{{ex.profFullName || "Docente non assegnato"}}</td>
                     <td>{{ex.date}}</td>
-                    <td><button class="formBtn" (click)="RegisterToExam(ex.examId)">Iscriviti</button></td>
+                    <td> <button *ngIf="!isRegistered(ex.examId)" class="formBtn"
+                            (click)="RegisterToExam(ex.examId)">Iscriviti</button>
+                        <button *ngIf="isRegistered(ex.examId)" class="formBtn"
+                            (click)="DeleteExam(ex.examId)">Disiscriviti</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -35,7 +39,7 @@
     <div class="sub-container">
         <h2>I miei esami</h2>
         <div class="exams-list">
-            <div class="exam-card" *ngFor="let ex of exams">
+            <div class="exam-card" *ngFor="let ex of studentExams">
                 <p><strong>Nome:</strong> {{ex.name}}</p>
                 <p><strong>CFU:</strong> {{ex.cfu}}</p>
                 <p><strong>Tipologia:</strong> {{ex.type}}</p>

@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 export class ExamsComponent implements OnInit {
   public exams: ExamInfos[] = [];
   public userRole: number = 0;
+  public studentExams: ExamInfos[] = [];
 
   constructor(
     private examService: ExamsService,
@@ -42,7 +43,8 @@ export class ExamsComponent implements OnInit {
   RegisterToExam(id: number) {
     this.examService.ExamRegistration(id).subscribe({
       next: (res) => {
-        console.log(res);
+        this.GetStudentExams();
+        this.GetExamsList();
       },
       error: (err) => {
         // window.alert("Ti sei già iscritto all'esame");
@@ -54,11 +56,32 @@ export class ExamsComponent implements OnInit {
   GetStudentExams() {
     this.examService.GetExams().subscribe({
       next: (res) => {
-        console.log(res);
+        this.studentExams = res;
+        console.log('Esami iscritti:', this.studentExams);
       },
       error: (err) => {
         console.log(err);
       }
     })
+  }
+
+  DeleteExam(regId: number) {
+    const reg = this.studentExams.find(e => e.examId === regId);
+    if (!reg) return;
+
+    this.examService.DeleteExamReg(reg.id).subscribe({
+      next: (res) => {
+        console.log("Disiscrizione avvenuta con successo", res);
+        this.GetStudentExams();
+        this.GetExamsList();
+      },
+      error: (err) => {
+        console.log("Errore nella disiscrizione", err);
+      }
+    });
+  }
+
+  isRegistered(examId: number): boolean {
+    return this.studentExams.some(e => e.examId === examId);
   }
 }
