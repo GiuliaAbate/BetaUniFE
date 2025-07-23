@@ -1,0 +1,123 @@
+.main-container h1 {
+    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.main-container p {
+    font-size: 20px;
+    padding-left: 25px;
+}
+
+.tab-container,
+.tab-container h2 {
+    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 40px;
+}
+
+/* Colore principale rosso per le nav-tabs */
+.tab-container .nav-tabs .nav-link {
+    color: var(--primary-color);
+    border: 1px solid transparent;
+    background-color: var(--base);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.tab-container .nav-tabs .nav-link:hover {
+    background-color: var(--background-color);
+    border-color: #ffb3b3;
+    color: var(--secondary-color);
+}
+
+.tab-container .nav-tabs .nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--base);
+    border-color: var(--primary-color);
+}
+
+/* Bordo inferiore del tab attivo */
+.tab-container .nav-tabs {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Contenuto tab attivo */
+.tab-container .tab-pane {
+    background-color: #fff0f0;
+    border: 1px solid #ffd6d6;
+    border-top: none;
+    padding: 20px;
+    border-radius: 0 0 6px 6px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+tr {
+    border: 1px solid var(--secondary-color);
+}
+
+thead th {
+    background-color: #ff2626;
+    color: white;
+    text-align: left;
+    padding: 12px;
+}
+
+tbody td {
+    padding: 10px;
+    align-content: center;
+    font-weight: 500;
+}
+
+tbody tr {
+    height: 70px;
+}
+
+tbody tr:nth-of-type(odd),
+tbody tr:nth-of-type(odd) {
+    background-color: #ffe6e6 !important;
+}
+
+tbody tr:nth-of-type(even),
+tbody tr:nth-of-type(even) {
+    background-color: rgba(255, 38, 38, 0.370) !important;
+}
+
+.formBtn {
+    margin: 0;
+}
+
+
+.student-table-appear {
+    animation: fadeInScale 0.5s;
+    max-height: 350px;
+    overflow-y: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid #ffd6d6;
+    background: #fff;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.selected-row {
+    background-color: #ffd6d6 !important;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(255, 38, 38, 0.08);
+}

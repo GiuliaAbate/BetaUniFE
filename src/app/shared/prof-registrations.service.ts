@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ExamInfos } from './exams.service';
 import { Classroom, Laboratory } from './courses-labs.service';
+import { Student } from './users.service';
 
 export interface CourseExamInfo {
   id: number;
@@ -123,13 +124,44 @@ export class ProfRegistrationsService {
     });
   }
 
-  DeleteLabReg(labId : number): Observable<Laboratory[]> {
+  DeleteLabReg(labId: number): Observable<Laboratory[]> {
     const token = sessionStorage.getItem('jwt');
     const headers = {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json'
     };
     return this.http.delete<Laboratory[]>(`${this.regLabUrl}/DeleteLab/${labId}`, { headers });
+  }
+
+  //Vedere studenti iscritti ai propri corsi
+  GetCourseStudents(regId: number): Observable<Student[]> {
+    const token = sessionStorage.getItem('jwt');
+    return this.http.get<Student[]>(`${this.regUrl}/StudentByCourse/${regId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+  //Vedere studenti iscritti ai propri laboratori
+  GetLabStudents(regId: number): Observable<Student[]> {
+    const token = sessionStorage.getItem('jwt');
+    return this.http.get<Student[]>(`${this.regUrl}/StudentsByLab/${regId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+
+  //Vedere studenti iscritti ai propri esami
+  GetExamStudents(regId: number): Observable<CourseExamInfo[]> {
+    const token = sessionStorage.getItem('jwt');
+    return this.http.get<CourseExamInfo[]>(`${this.regUrl}/StudentsByExam/${regId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
   }
 }
 
