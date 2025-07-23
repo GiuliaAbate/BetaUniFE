@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
       this.navItems = [
         {label: "Piano didattico", route: "/teachingPlan"},
         {label: "Insegnamenti", route: "/teachings"},
-        {label: "Elenco iscritti ", route: "/examEnrollments"},
+        {label: "Elenco iscritti ", route: "/enrolledStuds"},
       ];
     }
   }

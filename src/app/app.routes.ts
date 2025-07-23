@@ -11,8 +11,8 @@ import {CoursesLabsComponent } from './features/student/courses-labs/courses-lab
 import { ExamsComponent } from './features/student/exams/exams.component';
 import { DepDetailsComponent } from './features/guest/dep-details/dep-details.component';
 import { TeachingPlanComponent } from './features/professor/teaching-plan/teaching-plan.component';
-import { ExamEnrollmentsComponent } from './features/professor/exam-enrollments/exam-enrollments.component';
 import { TeachingsComponent } from './features/professor/teachings/teachings.component';
+import { EnrolledStudentsComponent } from './features/professor/enrolled-students/enrolled-students.component';
 
 
 export const routes: Routes = [
@@ -74,7 +74,7 @@ export const routes: Routes = [
         component: TeachingsComponent
     },
     {
-        path: "examEnrollments",
-        component: ExamEnrollmentsComponent
+        path: "enrolledStuds",
+        component: EnrolledStudentsComponent
     },
 ];
