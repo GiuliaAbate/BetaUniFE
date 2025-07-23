@@ -12,15 +12,11 @@ import { Modal } from 'bootstrap';
   styleUrl: './courses-labs.component.css'
 })
 export class CoursesLabsComponent implements OnInit {
-  @ViewChild('deleteModal') deleteModal!: ElementRef;
-  private bsModalInstance: Modal | null = null;
 
   public courses: Course[] = [];
   public labs: Laboratory[] = [];
   public userRole: number = 0;
 
-  selectedId: number | null = null;
-  selectedType: 'course' | 'lab' | null = null;
 
   constructor(
     private studRegSVC: StudRegistrationsService,
@@ -60,54 +56,4 @@ export class CoursesLabsComponent implements OnInit {
     });
   }
 
-  AskDelete(id: number, type: 'course' | 'lab') {
-    this.selectedId = id;
-    this.selectedType = type;
-
-    const modalElement = this.deleteModal.nativeElement;
-    this.bsModalInstance = new Modal(modalElement);
-    this.bsModalInstance.show();
-  }
-
-  Delete() {
-    if (this.selectedType === 'course' && this.selectedId !== null) {
-      this.DeleteCourse(this.selectedId);
-    } else if (this.selectedType === 'lab' && this.selectedId !== null) {
-      this.DeleteLab(this.selectedId);
-    }
-  }
-
-  DeleteCourse(regId: number) {
-    this.studRegSVC.DeleteCourseReg(regId).subscribe({
-      next: (res) => {
-        console.log("Eliminazione avvenuta con successo", res);
-        this.GetStudentCourses();
-
-        if (this.bsModalInstance) {
-          this.bsModalInstance.hide();
-          this.bsModalInstance = null;
-        }
-      },
-      error: (err) => {
-        console.log("Errore nell'eliminazione", err);
-      }
-    });
-  }
-
-  DeleteLab(regId: number) {
-    this.studRegSVC.DeleteLabReg(regId).subscribe({
-      next: (res) => {
-        console.log("Eliminazione avvenuta con successo", res);
-        this.GetStudentLabs();
-
-        if (this.bsModalInstance) {
-          this.bsModalInstance.hide();
-          this.bsModalInstance = null;
-        }
-      },
-      error: (err) => {
-        console.log("Errore nell'eliminazione", err);
-      }
-    });
-  }
 }

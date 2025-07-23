@@ -1,22 +1,44 @@
 <div class="main-container">
     <div class="courses-container">
         <h1>I MIEI CORSI</h1>
-        <div class="courses-card">
-            <p>qui mettere info corsi dello studente</p>
+        <div class="courses-list">
+            <div class="courses-card" *ngFor="let ce of courses">
+                <p><strong>Codice corso:</strong> {{ce.courseId}} </p>
+                <p><strong>Nome:</strong> {{ce.courseName}} </p>
+                <p><strong>Data inizio:</strong> {{ce.startDate}} </p>
+                <p><strong>Data fine:</strong> {{ce.endDate}} </p>
+                <p><strong>Aula:</strong> {{ce.classrooms || "Aula non assegnata"}} </p>
+
+            </div>
         </div>
     </div>
 
     <div class="labs-container">
         <h1>I MIEI LABORATORI</h1>
-        <div class="labs-card">
-            <p>qui mettere info corsi dello studente</p>
+        <div class="labs-list">
+            <div class="labs-card" *ngFor="let lab of labs">
+                <p><strong>Codice:</strong> {{lab.labId}} </p>
+                <p><strong>Nome:</strong> {{lab.name}} </p>
+                <p><strong>Frequenza:</strong> {{lab.attendance ? 'Obbligatoria' : 'Facoltativa'}} </p>
+                <p><strong>Data inizio:</strong> {{lab.startDate}} </p>
+                <p><strong>Data fine:</strong> {{lab.endDate}} </p>
+                <p><strong>Aula:</strong> {{lab.classrooms || "Aula non assegnata"}} </p>
+
+            </div>
         </div>
     </div>
 
     <div class="exams-container">
         <h1>I MIEI ESAMI</h1>
-        <div class="exams-card">
-            <p>qui mettere info corsi dello studente</p>
+        <div class="exams-list">
+            <div class="exams-card" *ngFor="let ex of exams">
+                <p><strong>Codice:</strong> {{ex.courseId}} </p>
+                <p><strong>Nome:</strong> {{ex.examName}} </p>
+                <p><strong>CFU:</strong> {{ex.cfu}} </p>
+                <p><strong>Tipologia:</strong> {{ex.type}} </p>
+                <p><strong>Data:</strong> {{ex.date}} </p>
+
+            </div>
         </div>
     </div>
 </div>

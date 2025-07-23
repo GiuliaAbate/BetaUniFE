@@ -9,12 +9,6 @@
                 <p><strong>Data fine:</strong> {{cs.endDate}} </p>
                 <p><strong>Aula:</strong> {{cs.classrooms || "Aula non assegnata"}} </p>
                 <p><strong>Docente:</strong> {{cs.profFullName || "Docente non assegnato"}} </p>
-
-                <div class="btn-container">
-                    <button class="deleteBtn" (click)="AskDelete(cs.id, 'course')">
-                        <i class="bi bi-trash3"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </div>
@@ -30,34 +24,8 @@
                 <p><strong>Data fine:</strong> {{lab.endDate}} </p>
                 <p><strong>Aula:</strong> {{lab.classrooms || "Aula non assegnata"}} </p>
                 <p><strong>Docente:</strong> {{lab.profFullName || "Docente non assegnato"}} </p>
-
-                <div class="btn-container">
-                    <button class="deleteBtn" (click)="AskDelete(lab.id, 'lab')">
-                        <i class="bi bi-trash3"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- modal di conferma eliminazione corso -->
-<div #deleteModal class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Conferma eliminazione</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p class="mb-0">Sei sicuro di disiscriverti da questo insegnamento?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="cancelBtn" data-bs-dismiss="modal">Annulla</button>
-                <button type="button" class="confirmBtn" id="confirmDelete" (click)="Delete()">Disiscrivimi</button>
-            </div>
-        </div>
-    </div>
-</div>

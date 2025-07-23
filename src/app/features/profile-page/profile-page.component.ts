@@ -22,7 +22,8 @@ export class ProfilePageComponent implements OnInit {
   phoneNumberInput: string = '';
   passwordInput: string = '';
   departments: Department[] = [];
-  exams: ExamInfos[] = [];
+  studExams: ExamInfos[] = [];
+  profExams :ExamInfos[] = [];
 
   constructor(
     private users: UsersService,
@@ -44,8 +45,8 @@ export class ProfilePageComponent implements OnInit {
   GetStudentInfo() {
     this.users.GetStudentInfo().subscribe({
       next: (res) => {
-        console.log(res);
         this.student = res;
+        console.log(this.student);
       },
       error: (err) => {
         console.error(err);
@@ -56,8 +57,8 @@ export class ProfilePageComponent implements OnInit {
   GetProfessorInfo() {
     this.users.GetProfessorInfo().subscribe({
       next: (res) => {
-        console.log(res);
-        this.professor = res;
+        this.professor = res;        
+        console.log(this.professor);
       },
       error: (err) => {
         console.error(err);
@@ -68,8 +69,8 @@ export class ProfilePageComponent implements OnInit {
   GetFutureExams() {
     this.examSvc.GetPlannedExams().subscribe({
       next: (res) => {
-        console.log(res);
-        this.exams = res;
+        this.studExams = res;
+        console.log(this.studExams);
       },
       error: (err) => {
         console.error(err);
@@ -80,8 +81,8 @@ export class ProfilePageComponent implements OnInit {
   GetProfFutureExams() {
     this.profReg.GetProfPlannedExams().subscribe({
       next: (res) => {
-        console.log(res);
-        this.exams = res;
+        this.profExams = res;
+        console.log(this.profExams);
       },
       error: (err) => {
         console.error(err);

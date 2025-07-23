@@ -10,13 +10,13 @@
                     <th scope="col">Codice corso</th>
                     <th scope="col">Nome</th>
                     <th scope="col">CFU</th>
-                    <th scope="col">Tipologia</th>                    
-                    <th scope="col">Data Inizio</th> 
+                    <th scope="col">Tipologia</th>
+                    <th scope="col">Data Inizio</th>
                     <th scope="col">Data Fine</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="courseExam && courseExam.length > 0">
                 <tr *ngFor="let ce of courseExam">
                     <td>{{ce.courseId}}</td>
                     <td>{{ce.courseName}}</td>
@@ -24,7 +24,16 @@
                     <td>{{ce.type}}</td>
                     <td>{{ce.startDate}}</td>
                     <td>{{ce.endDate}}</td>
-                    <td><button class="formBtn" (click)="AddCourseExam(ce.courseId,ce.examId)">Aggiungi</button></td>
+                    <td>
+                        <button class="formBtn" *ngIf="!isRegistered(ce.courseId, ce.examId)"
+                            (click)="AddCourseExam(ce.courseId, ce.examId)">
+                            Iscriviti
+                        </button>
+                        <button class="formBtn" *ngIf="isRegistered(ce.courseId, ce.examId)"
+                            (click)="DeleteExamCourse(getRegistrationId(ce.courseId, ce.examId))">
+                            Disiscriviti
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -33,7 +42,7 @@
         <h2>Laboratori</h2>
         <table>
             <thead>
-                <tr> 
+                <tr>
                     <th scope="col">Codice</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Frequenza</th>
@@ -42,16 +51,23 @@
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="labs && labs.length > 0">
                 <tr *ngFor="let lab of labs">
                     <td>{{lab.labId}}</td>
                     <td>{{lab.name}}</td>
                     <td>{{lab.attendance ? 'Obbligatoria' : 'Facoltativa'}}</td>
                     <td>{{lab.startDate}}</td>
                     <td>{{lab.endDate}}</td>
-                    <td><button class="formBtn" (click)="AddLab(lab.labId)">Aggiungi</button></td>
+                    <td>
+                        <button class="formBtn" *ngIf="!isLabAdded(lab.labId)" (click)="AddLab(lab.labId)">
+                            Iscriviti
+                        </button>
+                        <button class="formBtn" *ngIf="isLabAdded(lab.labId)" (click)="DeleteLab(getLabRegId(lab.labId))">
+                            Disiscriviti
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
-</div>  
+</div>

@@ -13,9 +13,11 @@ import { CoursesLabsService, Laboratory } from '../../../shared/courses-labs.ser
 })
 export class TeachingPlanComponent implements OnInit {
 
-  public courseExam: CourseExamInfo[] = []
+  public courseExam: CourseExamInfo[] = [];
   public userRole: number = 0;
   public labs: Laboratory[] = [];
+  public profCourseExams: CourseExamInfo[] = [];
+  public selectedLabs: Laboratory[] = [];
 
   constructor(
     private reg: ProfRegistrationsService,
@@ -29,6 +31,8 @@ export class TeachingPlanComponent implements OnInit {
     });
     this.GetCourses();
     this.GetLabs();
+    this.GetProfessorCourseExams();
+    this.GetSelectedLabs();
   }
 
   GetCourses() {
@@ -46,8 +50,8 @@ export class TeachingPlanComponent implements OnInit {
   AddCourseExam(courseId: string, examId: number) {
     this.reg.AddCourseExam(courseId, examId).subscribe({
       next: (res) => {
-        this.courseExam = res;
-        console.log(res);
+        console.log("Registrazione corso OK:", res);
+        this.GetProfessorCourseExams();
       },
       error: (err) => {
         console.error('Errore di aggiornamento:', err);
@@ -68,15 +72,85 @@ export class TeachingPlanComponent implements OnInit {
     });
   }
 
+  GetSelectedLabs() {
+    this.reg.GetSelectedLabs().subscribe({
+      next: (res) => {
+        this.selectedLabs = res;
+        console.log("Laboratori selezionati:", res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
   AddLab(labId: number) {
     this.reg.AddLab(labId).subscribe({
       next: (res) => {
-        this.labs = res;
-        console.log(res);
+        console.log("Registrazione laboratorio OK:", res);
+        this.GetSelectedLabs();
       },
       error: (err) => {
         console.error('Errore di aggiornamento:', err);
       }
     });
+  }
+
+
+  DeleteExamCourse(id: number | null) {
+    if (id === null) return;
+
+    this.reg.DeleteCourseExamReg(id).subscribe({
+      next: (res) => {
+        console.log("Disiscrizione avvenuta con successo", res);
+        this.GetProfessorCourseExams();
+      },
+      error: (err) => {
+        console.log("Errore nella disiscrizione", err);
+      }
+    });
+  }
+
+  DeleteLab(labId: number | null) {
+    if (labId === null) return;
+    this.reg.DeleteLabReg(labId).subscribe({
+      next: (res) => {
+        console.log("Disiscrizione avvenuta con successo", res);
+        this.GetSelectedLabs();
+      },
+      error: (err) => {
+        console.error('Errore nella rimozione del laboratorio:', err);
+      }
+    });
+  }
+
+  GetProfessorCourseExams() {
+    this.reg.GetSelectedCourseExams().subscribe({
+      next: (res) => {
+        this.profCourseExams = res;
+        console.log("Corsi del professore:", res);
+      },
+      error: (err) => {
+        console.error("Errore nel recupero dei corsi del professore:", err);
+      }
+    });
+  }
+
+  isRegistered(courseId: string, examId: number): boolean {
+    return this.profCourseExams.some(e => e.courseId === courseId && e.examId === examId);
+  }
+
+  isLabAdded(labId: number): boolean {
+    return this.selectedLabs.some(l => l.labId === labId);
+  }
+
+  getRegistrationId(courseId: string, examId: number): number | null {
+    const reg = this.profCourseExams.find(e => e.courseId === courseId && e.examId === examId);
+    return reg ? reg.id : null;
+  }
+
+  getLabRegId(labId: number): number | null {
+    const reg = this.selectedLabs.find(l => l.labId === labId);
+    return reg ? reg.id : null; // id è l'ID della registrazione ProfessorLabs
   }
 }

@@ -21,7 +21,16 @@
                     <td>{{cs.name}}</td>
                     <td>{{cs.startDate}}</td>
                     <td>{{cs.endDate}}</td>
-                    <td><button class="formBtn" (click)="AddCourseToPlan(cs.courseId)">Aggiungi</button></td>
+                    <!-- <td><button class="formBtn" (click)="AddCourseToPlan(cs.courseId)">Aggiungi</button></td> -->
+                    <td>
+                        <button class="formBtn" *ngIf="!isRegistered(cs.courseId)"
+                            (click)="AddCourseToPlan(cs.courseId)">
+                            Iscriviti
+                        </button>
+                        <button class="formBtn" *ngIf="isRegistered(cs.courseId)"
+                            (click)="DeleteCourse(getRegistrationId(cs.courseId))">
+                            Disiscriviti
+                        </button>
                 </tr>
             </tbody>
         </table>
@@ -46,7 +55,15 @@
                     <td>{{lab.attendance ? 'Obbligatoria' : 'Facoltativa'}}</td>
                     <td>{{lab.startDate}}</td>
                     <td>{{lab.endDate}}</td>
-                    <td><button class="formBtn" (click)="AddLabToPlan(lab.labId)">Aggiungi</button></td>
+                    <td>
+                        <button class="formBtn" *ngIf="!isLabAdded(lab.labId)" (click)="AddLabToPlan(lab.labId)">
+                            Iscriviti
+                        </button>
+                        <button class="formBtn" *ngIf="isLabAdded(lab.labId)"
+                            (click)="DeleteLab(getLabRegId(lab.labId))">
+                            Disiscriviti
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
