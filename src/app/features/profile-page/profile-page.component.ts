@@ -46,7 +46,7 @@ export class ProfilePageComponent implements OnInit {
     this.users.GetStudentInfo().subscribe({
       next: (res) => {
         this.student = res;
-        console.log(this.student);
+        console.log(res);
       },
       error: (err) => {
         console.error(err);

@@ -12,6 +12,7 @@ export interface Professor {
   phoneNumber: string;
   departmentId: string;
   enrollmentDate: Date;
+  departmentName : string;
 }
 
 export interface Student {
@@ -24,6 +25,7 @@ export interface Student {
   phoneNumber: string;
   departmentId: string;
   enrollmentDate: Date;
+  departmentName : string;
 }
 
 @Injectable({
