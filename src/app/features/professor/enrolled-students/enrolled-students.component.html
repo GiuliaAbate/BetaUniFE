@@ -14,6 +14,7 @@
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
+            <!-- PARTE CORSI -->
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
                 tabindex="0">
                 <h2>Corsi</h2>
@@ -67,11 +68,119 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- PARTE LABORATORI -->
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
                 <h2>Laboratori</h2>
+
+                <div class="lab-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Codice laboratorio</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Frequenze</th>
+                                <th scope="col">Data Inizio</th>
+                                <th scope="col">Data Fine</th>
+                                <th scope="col">Aula</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let l of labs" [class.selected-row]="l.id === selectedCourseId">
+                                <td> {{l.labId}} </td>
+                                <td> {{l.name}} </td>
+                                <td> {{l.attendance ? 'Obbligatoria' : 'Facoltativa'}} </td>
+                                <td> {{l.startDate}} </td>
+                                <td> {{l.endDate}} </td>
+                                <td> {{l.classrooms || "Aula non assegnata"}} </td>
+                                <td>
+                                    <button (click)="GetStudentByLab(l.id)" class="formBtn">Vedi studenti</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table *ngIf="selectedCourseStudents.length > 0" class="student-table-appear">
+                        <thead>
+                            <tr>
+                                <th>Matricola</th>
+                                <th>Nome</th>
+                                <th>Cognome</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let s of selectedCourseStudents">
+                                <td>{{ s.studId }}</td>
+                                <td>{{ s.name }}</td>
+                                <td>{{ s.surname }}</td>
+                                <td>{{ s.email }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="selectedCourseStudents && selectedCourseId && selectedCourseStudents.length === 0"
+                        class="student-table-appear" style="margin-top:20px;">
+                        <em>Nessuno studente iscritto a questo laboratorio.</em>
+                    </div>
+                </div>
             </div>
+
+            <!-- PARTE ESAMI -->
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
                 <h2>Esami</h2>
+
+                <div class="exam-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Codice esame</th>
+                                <th scope="col">Corso di appartenenza</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">CFU</th>
+                                <th scope="col">Tipologia</th>
+                                <th scope="col">Data</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let e of exams" [class.selected-row]="e.id === selectedCourseId">
+                                <td> {{e.examId}} </td>
+                                <td> {{e.courseId}} </td>
+                                <td> {{e.examName}} </td>
+                                <td> {{e.cfu}} </td>
+                                <td> {{e.type}} </td>
+                                <td> {{e.date}} </td>
+                                <td>
+                                    <button (click)="GetStudentByExam(e.id)" class="formBtn">Vedi studenti</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table *ngIf="selectedCourseStudents.length > 0" class="student-table-appear">
+                        <thead>
+                            <tr>
+                                <th>Matricola</th>
+                                <th>Nome</th>
+                                <th>Cognome</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let s of selectedCourseStudents">
+                                <td>{{ s.studId }}</td>
+                                <td>{{ s.name }}</td>
+                                <td>{{ s.surname }}</td>
+                                <td>{{ s.email }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="selectedCourseStudents && selectedCourseId && selectedCourseStudents.length === 0"
+                        class="student-table-appear" style="margin-top:20px;">
+                        <em>Nessuno studente iscritto a questo corso.</em>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

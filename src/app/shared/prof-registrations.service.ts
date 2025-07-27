@@ -155,9 +155,9 @@ export class ProfRegistrationsService {
 
 
   //Vedere studenti iscritti ai propri esami
-  GetExamStudents(regId: number): Observable<CourseExamInfo[]> {
+  GetExamStudents(regId: number): Observable<Student[]> {
     const token = sessionStorage.getItem('jwt');
-    return this.http.get<CourseExamInfo[]>(`${this.regUrl}/StudentsByExam/${regId}`, {
+    return this.http.get<Student[]>(`${this.regUrl}/StudentsByExam/${regId}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

@@ -22,6 +22,12 @@ export class EnrolledStudentsComponent implements OnInit {
   public selectedCourseStudents: Student[] = [];
   public selectedCourseId: number | null = null;
 
+  // public selectedLabStudent: Student[] = [];
+  // public selectedLabId: number | null = null;
+
+  // public selectedExamStudents: Student[] = [];
+  // public selectedExamId: number | null = null;
+
   constructor(
     private reg: ProfRegistrationsService,
     private shared: SharedService
@@ -55,9 +61,16 @@ export class EnrolledStudentsComponent implements OnInit {
   }
 
   GetStudentByLab(id: number) {
+    if (this.selectedCourseId === id) {
+      this.selectedCourseId = null;
+      this.selectedCourseStudents = [];
+      return;
+    }
+
+    this.selectedCourseId = id;
     this.reg.GetLabStudents(id).subscribe({
       next: (res) => {
-        console.log(res);
+        this.selectedCourseStudents = res;
       },
       error: (err) => {
         console.error('Errore di aggiornamento:', err);
@@ -66,9 +79,16 @@ export class EnrolledStudentsComponent implements OnInit {
   }
 
   GetStudentByExam(id: number) {
+    if (this.selectedCourseId === id) {
+      this.selectedCourseId = null;
+      this.selectedCourseStudents = [];
+      return;
+    }
+
+    this.selectedCourseId = id;
     this.reg.GetExamStudents(id).subscribe({
       next: (res) => {
-        console.log(res);
+        this.selectedCourseStudents = res;
       },
       error: (err) => {
         console.error('Errore di aggiornamento:', err);
