@@ -91,6 +91,86 @@
   font-size: 20px;
 }
 
+/* Hamburger menu */
+@media (max-width: 991px) {
+
+  .toggler i{
+    font-size: 40px;
+  }
+  
+  /* Navbar menu diventa colonna ma senza spostare user-actions */
+  .navbar-menu {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+  }
+
+  /* Collapse: menu verticale posizionato assolutamente sotto hamburger */
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: auto;
+    background-color: var(--primary-color);
+    width: 200px;
+    border-radius: 0 0 8px 8px;
+    border: 2px solid var(--base);
+    box-shadow: 0 4px 8px rgb(0 0 0 / 0.15);
+    display: none; /* nascosto di default */
+    flex-direction: column;
+    padding: 10px 0;
+    z-index: 1050;
+  }
+
+  /* Quando il menu è aperto (collapse.show), mostra */
+  .navbar-collapse.show {
+    display: flex;
+  }
+
+  /* Voci menu verticali */
+  .navbar-nav {
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    padding: 8px 20px;
+  }
+
+  .nav-link {
+    font-size: 18px;
+  }
+
+  /* Hover con bordo inferiore rimosso, colore di sfondo */
+  .nav-item:hover {
+    border-bottom: none;
+    background-color: var(--secondary-color);
+  }
+
+  /* Pulsanti login/profilo: fissi a destra senza spostarsi */
+  .user-actions {
+    position: static;
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  /* Hamburger button sopra gli altri elementi */
+  .navbar-toggler {
+    z-index: 1060;
+  }
+
+  /* Logo rimane visibile */
+  .logo-container {
+    z-index: 1051;
+  }
+}
+
 /* SearchBar */
 /* .search-bar {
   position: relative;
