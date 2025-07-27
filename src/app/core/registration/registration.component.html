@@ -12,6 +12,7 @@
 </div>
 
 <div *ngIf="isClicked" class="form-container">
+
     <button class="backBtn" (click)="goBack()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
             viewBox="0 0 16 16">
@@ -20,6 +21,13 @@
         </svg>
         Indietro
     </button>
+
+    <div *ngIf="role == 'student'" class="text-role">
+        <h2>Registrazione come <strong>studente</strong></h2>
+    </div>
+    <div *ngIf="role == 'professor'" class="text-role">
+        <h2>Registrazione come <strong>professore</strong></h2>
+    </div>
 
     <div class="form-group">
         <form (ngSubmit)="onSubmit()" #myForm="ngForm" novalidate>

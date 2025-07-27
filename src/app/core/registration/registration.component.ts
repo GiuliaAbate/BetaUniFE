@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-registration',  
+  selector: 'app-registration',
   imports: [CommonModule, FormsModule],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css',
@@ -35,6 +35,7 @@ export class RegistrationComponent implements OnInit {
     this.GetDepartmentsList();
   }
 
+  //Si prendono facolà per il select 
   GetDepartmentsList() {
     this.shared.GetDepartments().subscribe({
       next: (res) => {
@@ -46,34 +47,37 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
+  //Metodo che invia il form e richiama metodo corrispondente a seconda del ruolo
   onSubmit() {
     if (this.role == 'student') {
       this.signUp.StudentSignUp(this.formData).subscribe({
-        next: res => {
+        next: (res) => {
           this.route.navigate(['/login']);
         },
-        error: err => {
+        error: (err) => {
           console.error("Errore di registrazione", err);
         }
       })
     } else if (this.role == 'professor') {
       this.signUp.ProfessorSignUp(this.formData).subscribe({
-        next: res => {
+        next: (res) => {
           this.route.navigate(['/login']);
         },
-        error: err => {
+        error: (err) => {
           console.error("Errore di registrazione", err);
         }
       })
     }
   }
 
+  //Si controlla il ruolo in base al pulsante selezionato
   check(role: 'student' | 'professor') {
     this.role = role;
     this.isClicked = true;
     console.log("Ruolo selezionato:", this.role);
   }
 
+  //Metodo per ritornare alla schermata di selezione del ruolo dal form
   goBack(): void {
     this.isClicked = false;
   }

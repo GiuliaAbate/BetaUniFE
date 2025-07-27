@@ -60,6 +60,14 @@ a:hover {
     flex-direction: column;
 }
 
+.text-role {
+    margin-top: 15px;
+}
+
+.text-role h2 {
+    font-size: 23px;
+}
+
 .form-container form {
     width: 100%;
     display: flex;
@@ -91,4 +99,8 @@ a:hover {
 input.ng-invalid.ng-touched,
 select.ng-invalid.ng-touched {
     border-color: red;
+}
+
+.alert{
+    padding: 10px;
 }
