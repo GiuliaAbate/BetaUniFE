@@ -121,3 +121,35 @@ tbody tr:nth-of-type(even) {
     font-weight: bold;
     box-shadow: 0 2px 8px rgba(255, 38, 38, 0.08);
 }
+
+@media (max-width: 768px) {
+
+    .course-container,
+    .lab-container,
+    .exam-container {
+        padding: 15px 10px;
+        overflow-x: auto;
+    }
+
+    .course-container table,
+    .lab-container table,
+    .exam-container table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    thead th,
+    tbody td {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .formBtn {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    tbody tr {
+        height: auto;
+    }
+}

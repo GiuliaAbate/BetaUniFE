@@ -39,9 +39,19 @@
     color: var(--tertiary-color);
 }
 
-.courses-list, .labs-list, .exams-list {
+.courses-list,
+.labs-list,
+.exams-list {
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
 
+@media (max-width: 768px) {
+
+    .courses-list,
+    .labs-list,
+    .exams-list {
+        flex-direction: column;
+    }
+}

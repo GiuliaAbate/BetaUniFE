@@ -3,6 +3,7 @@
     flex-direction: row;
     width: 100%;
     height: auto;
+    padding-bottom: 5%;
 }
 
 .personal-infos,
@@ -100,7 +101,7 @@
     margin: 10px;
 }
 
-h2{
+h2 {
     margin-top: 10px;
 }
 
@@ -141,4 +142,88 @@ h2{
 .exam-info {
     font-size: 0.85rem;
     color: #000000;
+}
+
+
+@media (max-width: 800px) {
+
+    h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .main-container {
+        flex-direction: column;
+        padding: 0 4%;
+    }
+
+    .personal-infos,
+    .career-infos {
+        width: 100%;
+        margin: 3% 0;
+        padding: 16px;
+    }
+
+    .data-container {
+        justify-content: center;
+    }
+
+    .data-container p {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    .data-container-input {
+        flex-direction: column;
+    }
+
+    .data-container .input-group {
+        width: 100%;
+        align-items: center;
+    }
+
+    .data-container input {
+        width: 100%;
+    }
+
+    .btn-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-container button {
+        width: 90%;
+    }
+
+    .future-exams li {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .exam-info {
+        font-size: 0.8rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .data-container p,
+    .future-exams li {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    .data-container-input {
+        gap: 12px;
+    }
+
+    .btn-container button {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    .data-container input {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
 }

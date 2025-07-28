@@ -6,6 +6,12 @@
     font-weight: bold;
 }
 
+.courses-list,
+.labs-list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
 
 .courses-card,
 .labs-card {
@@ -36,12 +42,6 @@
     color: var(--tertiary-color);
 }
 
-.courses-list,
-.labs-list {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
 
 .btn-container {
     display: flex;
@@ -75,7 +75,7 @@
     background-color: rgb(207, 197, 197);
 }
 
-.cancelBtn:hover{
+.cancelBtn:hover {
     background-color: rgb(153, 147, 147);
 }
 
@@ -87,6 +87,14 @@
     background-color: var(--primary-color);
 }
 
-.confirmBtn:hover{
+.confirmBtn:hover {
     background-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+
+    .courses-list,
+    .labs-list {
+        flex-direction: column;
+    }
 }

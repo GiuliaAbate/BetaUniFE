@@ -1,62 +1,64 @@
-<h1>Accedi a BetaUni</h1>
+<div class="main-container">
+    <h1>Accedi a BetaUni</h1>
 
-<div *ngIf="!isClicked" class="user-choice">
-    <h2>Sei uno <strong>studente</strong> o un <strong>professore</strong>?</h2>
+    <div *ngIf="!isClicked" class="user-choice">
+        <h2>Sei uno <strong>studente</strong> o un <strong>professore</strong>?</h2>
 
-    <div class="btn-group">
-        <button class="mainBtn" (click)="check('student')">Studente</button>
-        <button class="mainBtn" (click)="check('professor')">Professore</button>
-    </div>
-
-    <p>Non sei già registrato? <a [routerLink]="'/register'">Registrati subito</a></p>
-</div>
-
-<div *ngIf="isClicked" class="form-container">
-
-    <button class="backBtn" (click)="goBack()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
-            viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
-        </svg>
-        Indietro
-    </button>
-
-    <div *ngIf="role == 'student'" class="text-role">
-        <h2>Registrazione come <strong>studente</strong></h2>
-    </div>
-    <div *ngIf="role == 'professor'" class="text-role">
-        <h2>Registrazione come <strong>professore</strong></h2>
-    </div>
-
-    <form (ngSubmit)='onSubmit()'>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email * </label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="inserisci email"
-                [(ngModel)]="formData.email" #email="ngModel" required email>
-
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
-                <div *ngIf="email.errors?.['required']">Inserire email</div>
-            </div>
-            <div *ngIf="emailError" class="alert alert-danger">
-                {{ emailError }}
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password *</label>
-            <input type="password" class="form-control" id="password" name="password " placeholder="inserisci password"
-                [(ngModel)]="formData.password" #password="ngModel" required>
-
-            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
-                <div *ngIf="password.errors?.['required']">Inserire password</div>
-            </div>
-
-            <div *ngIf="pwError" class="alert alert-danger">
-                {{ pwError }}
-            </div>
+        <div class="btn-group">
+            <button class="mainBtn" (click)="check('student')">Studente</button>
+            <button class="mainBtn" (click)="check('professor')">Professore</button>
         </div>
 
+        <p>Non sei già registrato? <a [routerLink]="'/register'">Registrati subito</a></p>
+    </div>
 
-        <button type="submit" class="formBtn">Invia</button>
-    </form>
+    <div *ngIf="isClicked" class="form-container">
+
+        <button class="backBtn" (click)="goBack()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+            </svg>
+            Indietro
+        </button>
+
+        <div *ngIf="role == 'student'" class="text-role">
+            <h2>Registrazione come <strong>studente</strong></h2>
+        </div>
+        <div *ngIf="role == 'professor'" class="text-role">
+            <h2>Registrazione come <strong>professore</strong></h2>
+        </div>
+
+        <form (ngSubmit)='onSubmit()'>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email * </label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="inserisci email"
+                    [(ngModel)]="formData.email" #email="ngModel" required email>
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+                    <div *ngIf="email.errors?.['required']">Inserire email</div>
+                </div>
+                <div *ngIf="emailError" class="alert alert-danger">
+                    {{ emailError }}
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password *</label>
+                <input type="password" class="form-control" id="password" name="password "
+                    placeholder="inserisci password" [(ngModel)]="formData.password" #password="ngModel" required>
+
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+                    <div *ngIf="password.errors?.['required']">Inserire password</div>
+                </div>
+
+                <div *ngIf="pwError" class="alert alert-danger">
+                    {{ pwError }}
+                </div>
+            </div>
+
+
+            <button type="submit" class="formBtn">Invia</button>
+        </form>
+    </div>
 </div>

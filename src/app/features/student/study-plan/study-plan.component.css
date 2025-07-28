@@ -58,3 +58,32 @@ tbody tr {
 .formBtn {
     margin: 0;
 }
+
+@media (max-width: 650px) {
+    .courses-container,
+    .labs-container {
+        padding: 15px 10px;
+        overflow-x: auto;
+    }
+
+    .courses-container table,
+    .labs-container table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    thead th,
+    tbody td {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .formBtn {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    tbody tr {
+        height: auto;
+    }
+}
