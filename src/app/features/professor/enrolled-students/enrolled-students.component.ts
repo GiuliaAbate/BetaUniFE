@@ -22,12 +22,6 @@ export class EnrolledStudentsComponent implements OnInit {
   public selectedCourseStudents: Student[] = [];
   public selectedCourseId: number | null = null;
 
-  // public selectedLabStudent: Student[] = [];
-  // public selectedLabId: number | null = null;
-
-  // public selectedExamStudents: Student[] = [];
-  // public selectedExamId: number | null = null;
-
   constructor(
     private reg: ProfRegistrationsService,
     private shared: SharedService
@@ -43,6 +37,7 @@ export class EnrolledStudentsComponent implements OnInit {
     this.GetExams();
   }
 
+  //Vedere gli studenti iscritti al proprio corso
   GetStudentByCourse(id: number) {
     if (this.selectedCourseId === id) {
       this.selectedCourseId = null;
@@ -60,6 +55,7 @@ export class EnrolledStudentsComponent implements OnInit {
     });
   }
 
+  //Vedere gli studenti iscritti al proprio laboratorio
   GetStudentByLab(id: number) {
     if (this.selectedCourseId === id) {
       this.selectedCourseId = null;
@@ -78,6 +74,7 @@ export class EnrolledStudentsComponent implements OnInit {
     });
   }
 
+  //Vedere gli studenti iscritti al proprio esame
   GetStudentByExam(id: number) {
     if (this.selectedCourseId === id) {
       this.selectedCourseId = null;
@@ -96,6 +93,7 @@ export class EnrolledStudentsComponent implements OnInit {
     });
   }
 
+  //Prendere corsi, lab ed esami selezionati
   GetCourses() {
     this.reg.GetSelectedCourses().subscribe({
       next: (res) => {

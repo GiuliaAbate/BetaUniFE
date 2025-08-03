@@ -12,13 +12,17 @@ export interface Department {
 @Injectable({
   providedIn: 'root'
 })
+
+//Servizio generali con metodi di base e condivisi
 export class SharedService {
 
   constructor(private http: HttpClient, private route: Router) { }
 
-  departments: Department[] = [];
   private apiUrl = 'https://localhost:7129/api/Departments';
 
+  departments: Department[] = [];
+
+  //Si crea un subject per poi assegnare un observable
   private userRoleSubject = new BehaviorSubject<number>(this.GetInitialUserRole());
   userRole = this.userRoleSubject.asObservable();
 
@@ -40,16 +44,19 @@ export class SharedService {
     this.route.navigate(['/homepage']);
   }
 
-  //metodo per prendere ruolo subito
+  //Metodo per prendere ruolo iniziale
   GetInitialUserRole(): number {
+    //Si prende il ruolo che si trova nel token in sessionStorage
     const role = sessionStorage.getItem('userRole');
+    //Se il ruolo è presente nel token (quindi utente loggato, se professore o studente) si converte in un numero (1= studente, 2=professore)
+    //Se non è presente allora il ruolo è uguale a 0
     return role ? parseInt(role) : 0;
   }
 
+  //Metodo per impostare il ruolo, sottoscrivendo sul subject
   SetUserRole(role: number) {
     sessionStorage.setItem('userRole', role.toString());
     this.userRoleSubject.next(role);
   }
 
-  
 }

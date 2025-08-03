@@ -18,8 +18,6 @@ export class TeachingsComponent implements OnInit {
   public exams: CourseExamInfo[] = []
   public labs: Laboratory[] = [];
 
-  @ViewChild('deleteModal') deleteModal!: ElementRef;
-  private bsModalInstance: Modal | null = null;
   selectedId: number | null = null;
   selectedType: 'course' | 'lab' | 'exam' | null = null;
 
@@ -39,6 +37,7 @@ export class TeachingsComponent implements OnInit {
     this.GetExams();
   }
 
+  //Prendere solo corsi selezionati
   GetCourses() {
     this.regSvc.GetSelectedCourses().subscribe({
       next: (res) => {
@@ -51,6 +50,7 @@ export class TeachingsComponent implements OnInit {
     });
   }
 
+  //Prendere laboratori selezionati
   GetLabs() {
     this.regSvc.GetSelectedLabs().subscribe({
       next: (res) => {
@@ -63,6 +63,7 @@ export class TeachingsComponent implements OnInit {
     });
   }
 
+  //Prendere esami selezionati
   GetExams() {
     this.regSvc.GetSelectedExams().subscribe({
       next: (res) => {

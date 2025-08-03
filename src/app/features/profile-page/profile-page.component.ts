@@ -17,10 +17,13 @@ export class ProfilePageComponent implements OnInit {
 
   student: Student | null = null;
   professor: Professor | null = null;
+
   public userRole: number = 0;
   isClicked: boolean = false;
+
   phoneNumberInput: string = '';
   passwordInput: string = '';
+  
   departments: Department[] = [];
   studExams: ExamInfos[] = [];
   profExams :ExamInfos[] = [];
@@ -42,6 +45,7 @@ export class ProfilePageComponent implements OnInit {
     this.GetProfFutureExams();
   }
 
+  //Metodi per prendere dati dello studente e professoe
   GetStudentInfo() {
     this.users.GetStudentInfo().subscribe({
       next: (res) => {
@@ -57,7 +61,7 @@ export class ProfilePageComponent implements OnInit {
   GetProfessorInfo() {
     this.users.GetProfessorInfo().subscribe({
       next: (res) => {
-        this.professor = res;        
+        this.professor = res;
         console.log(this.professor);
       },
       error: (err) => {
@@ -66,6 +70,7 @@ export class ProfilePageComponent implements OnInit {
     })
   }
 
+  //Si prendono esami futuri dello studente
   GetFutureExams() {
     this.examSvc.GetPlannedExams().subscribe({
       next: (res) => {
@@ -78,6 +83,7 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
+  //Si prendono esami futuri del professore
   GetProfFutureExams() {
     this.profReg.GetProfPlannedExams().subscribe({
       next: (res) => {
@@ -90,10 +96,12 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
+  //Metodo per vedere se il pulsante è stato cliccato
   checkBtn() {
     this.isClicked = true;
   }
 
+  //Metodi per aggiornare i dati dello studente e del professore
   applyStudentChanges() {
     this.users.UpdateStudentInfos({
       phoneNumber: this.phoneNumberInput,

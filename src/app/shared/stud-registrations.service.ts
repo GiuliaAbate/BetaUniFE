@@ -14,6 +14,7 @@ export class StudRegistrationsService {
   private courseRegUrl = 'https://localhost:7129/api/StudentCourses';
   private labRegUrl = 'https://localhost:7129/api/StudentLabs';
 
+  //Metodo che permette allo studente di aggiungere un corso al suo piano di studi
   AddCourses(courseId: string): Observable<Course[]> {
     const token = sessionStorage.getItem('jwt');
 
@@ -27,6 +28,7 @@ export class StudRegistrationsService {
     );
   }
 
+  //Metodo che permette allo studente di aggiungere un laboratorio al suo piano di studi
   AddLabs(labId: number): Observable<Laboratory[]> {
     const token = sessionStorage.getItem('jwt');
 
@@ -40,6 +42,7 @@ export class StudRegistrationsService {
     );
   }
 
+  //Metodo che prende tutti i corsi aggiunti da uno studente
   GetCourses(): Observable<Course[]> {
     const token = sessionStorage.getItem('jwt');
 
@@ -51,6 +54,7 @@ export class StudRegistrationsService {
 
   }
 
+  //Metodo che prende tutti i laboratori aggiunti da uno studente
   GetLabs(): Observable<Laboratory[]> {
     const token = sessionStorage.getItem('jwt');
 
@@ -61,6 +65,7 @@ export class StudRegistrationsService {
     });
   }
 
+  //Metodo per disiscriversi da un corso, quindi si elimina la registrazione effettuata in precedenza
   DeleteCourseReg(id: number): Observable<Course[]> {
     const token = sessionStorage.getItem('jwt');
 
@@ -74,6 +79,7 @@ export class StudRegistrationsService {
     );
   }
 
+  //Metodo per disiscriversi da un laboratorio
   DeleteLabReg(id: number): Observable<Laboratory[]> {
     const token = sessionStorage.getItem('jwt');
 

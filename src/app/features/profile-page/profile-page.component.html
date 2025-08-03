@@ -8,9 +8,14 @@
             <p><strong>Data di nascita</strong> {{ student.birthDate | date:'dd/MM/yyyy' }}</p>
             <p><strong>Numero di telefono</strong> {{ student.phoneNumber }}</p>
             <p><strong>Email</strong> {{ student.email }}</p>
+
+            <!-- Pulsante per mostrare campi di modifica dei dati -->
             <div class="btn-container" *ngIf="!isClicked">
+                <!-- Si controlla che il pulsante sia stato cliccato -->
                 <button class="formBtn" (click)="checkBtn()">Modifica dati</button>
             </div>
+
+            <!-- Si mostrano quindi i campi per modificare num telefono e password -->
             <div class="data-container-input row" *ngIf="isClicked">
                 <div class="input-group">
                     <label for="phoneNumber">Nuovo numero di telefono</label>
@@ -30,9 +35,11 @@
             <p><strong>Data di nascita</strong> {{ professor.birthDate | date:'dd/MM/yyyy' }}</p>
             <p><strong>Numero di telefono</strong> {{ professor.phoneNumber }}</p>
             <p><strong>Email</strong> {{ professor.email }}</p>
+
             <div class="btn-container" *ngIf="!isClicked">
                 <button class="formBtn" (click)="checkBtn()">Modifica dati</button>
             </div>
+
             <div class="data-container-input row" *ngIf="isClicked">
                 <div class="input-group">
                     <label for="phoneNumber">Nuovo numero di telefono</label>
@@ -55,7 +62,6 @@
                 <strong>Matricola</strong>
                 {{ student.studId }}
             </p>
-            <!-- *ngFor="let dep of departments" e dep.name -->
             <p>
                 <strong>Facoltà di appartenenza</strong>
                 {{ student.departmentName }}

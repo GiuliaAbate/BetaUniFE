@@ -37,13 +37,10 @@ export class SignupService {
   private profUrl = 'https://localhost:7129/api/Professors';
   private studUrl = 'https://localhost:7129/api/Students';
 
-  //Metodo che prende api della registrazione del professore
+  //Metodo che prende api della registrazione del professore e dello studente
   ProfessorSignUp(data: any) {
     return this.http.post<any>(`${this.profUrl}/ProfRegistration`, data, { withCredentials: false });
   }
-
-
-  //Metodo che prende api della registrazione dello studente
 
   StudentSignUp(data: any) {
     return this.http.post<any>(`${this.studUrl}/StudRegistration`, data, { withCredentials: false });

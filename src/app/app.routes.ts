@@ -67,7 +67,7 @@ export const routes: Routes = [
     },
     {
         path: "teachingPlan",
-        component: TeachingPlanComponent 
+        component: TeachingPlanComponent
     },
     {
         path: "teachings",

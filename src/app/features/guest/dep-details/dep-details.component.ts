@@ -17,7 +17,8 @@ export class DepDetailsComponent implements OnInit {
   constructor(
     private CourseLab: CoursesLabsService,
     private shared: SharedService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute
+  ) { }
 
   departmentId: string = '';
   department!: Department;
@@ -25,8 +26,11 @@ export class DepDetailsComponent implements OnInit {
   labs: Laboratory[] = [];
   classes: Classroom[] = [];
 
+  //Inizializzazione
   ngOnInit(): void {
+    //Si prende id dalla route per mostrare la pagina della facoltà selezionata
     this.departmentId = this.route.snapshot.paramMap.get('id') || '';
+    //Se l'id è presente si caricano tutte le informazioni
     if (this.departmentId) {
       this.LoadDepartments(this.departmentId);
       this.LoadCourses(this.departmentId);
@@ -34,6 +38,7 @@ export class DepDetailsComponent implements OnInit {
     }
   }
 
+  //Si prende la chiamata che prende il nome della facoltà dato id
   LoadDepartments(depId: string) {
     this.shared.GetDepartmentById(depId).subscribe({
       next: (res) => {
@@ -45,6 +50,7 @@ export class DepDetailsComponent implements OnInit {
     });
   }
 
+  //Si caricano i corsi e laboratori
   LoadCourses(depId: string) {
     this.CourseLab.GetCoursesByDepartment(depId).subscribe({
       next: (res) => {

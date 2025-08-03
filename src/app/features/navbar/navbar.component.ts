@@ -13,14 +13,14 @@ import { SharedService } from '../../shared/shared.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public login : SigninService, public shared: SharedService) {
-  }
+  constructor(public login : SigninService, public shared: SharedService) {}
 
   navItems: { label: string, route: string}[] = [];
   public userRole: number = 0;
 
-
+  //Inizializzazione del componente
   ngOnInit() : void {
+    //Si inizializza il ruolo dell'utente loggato e in base a quello verrà mostrata navbar con voci diverse
     this.shared.userRole.subscribe(role => {
       this.userRole = role;
       this.showNavItems();
@@ -36,12 +36,14 @@ export class NavbarComponent implements OnInit {
         {label: "Offerta Formativa", route: "/education"},
         {label: "Iscrizioni", route: "/enrollment"},
       ];
+    //Studente
     } else if (this.userRole == 1) {
       this.navItems = [
         {label: "Piano Carriera", route: "/studyPlan"},
         {label: "Corsi e Laboratori", route: "/courses-labs"},
         {label: "Esami", route: "/exams"},
       ];
+    //Professore
     } else if (this.userRole == 2) {
       this.navItems = [
         {label: "Piano didattico", route: "/teachingPlan"},

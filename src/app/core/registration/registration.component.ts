@@ -31,11 +31,12 @@ export class RegistrationComponent implements OnInit {
     departmentId: ''
   }
 
+  //Inizializzazione 
   ngOnInit() {
     this.GetDepartmentsList();
   }
 
-  //Si prendono facolà per il select 
+  //Si prendono facolà per il select
   GetDepartmentsList() {
     this.shared.GetDepartments().subscribe({
       next: (res) => {
@@ -51,7 +52,7 @@ export class RegistrationComponent implements OnInit {
   onSubmit() {
     if (this.role == 'student') {
       this.signUp.StudentSignUp(this.formData).subscribe({
-        next: (res) => {
+        next: () => {
           this.route.navigate(['/login']);
         },
         error: (err) => {
@@ -60,7 +61,7 @@ export class RegistrationComponent implements OnInit {
       })
     } else if (this.role == 'professor') {
       this.signUp.ProfessorSignUp(this.formData).subscribe({
-        next: (res) => {
+        next: () => {
           this.route.navigate(['/login']);
         },
         error: (err) => {

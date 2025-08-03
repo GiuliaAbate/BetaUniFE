@@ -35,6 +35,7 @@ export class TeachingPlanComponent implements OnInit {
     this.GetSelectedLabs();
   }
 
+  //Si prende elenco dei corsi (e quindi esami sono collegati) che il professore può aggiungere
   GetCourses() {
     this.reg.GetCourseExam().subscribe({
       next: (res) => {
@@ -47,6 +48,7 @@ export class TeachingPlanComponent implements OnInit {
     });
   }
 
+  //Per aggiungere un corso/esame
   AddCourseExam(courseId: string, examId: number) {
     this.reg.AddCourseExam(courseId, examId).subscribe({
       next: (res) => {
@@ -59,7 +61,7 @@ export class TeachingPlanComponent implements OnInit {
     });
   }
 
-
+  //Prendere elenco dei laboratori disponibili
   GetLabs() {
     this.CoursesLabs.GetLabsByProfessor().subscribe({
       next: (res) => {
@@ -72,6 +74,7 @@ export class TeachingPlanComponent implements OnInit {
     });
   }
 
+  //Prendere laboratori scelti 
   GetSelectedLabs() {
     this.reg.GetSelectedLabs().subscribe({
       next: (res) => {
@@ -84,6 +87,7 @@ export class TeachingPlanComponent implements OnInit {
     });
   }
 
+  //Per iscriversi ad un laboratorio
   AddLab(labId: number) {
     this.reg.AddLab(labId).subscribe({
       next: (res) => {
@@ -96,7 +100,7 @@ export class TeachingPlanComponent implements OnInit {
     });
   }
 
-
+  //Disiscriversi da corso/esame
   DeleteExamCourse(id: number | null) {
     if (id === null) return;
 
@@ -111,6 +115,7 @@ export class TeachingPlanComponent implements OnInit {
     });
   }
 
+  //Disiscriversi da laboratorio
   DeleteLab(labId: number | null) {
     if (labId === null) return;
     this.reg.DeleteLabReg(labId).subscribe({
@@ -124,6 +129,7 @@ export class TeachingPlanComponent implements OnInit {
     });
   }
 
+  //Prendere i corsi selezionati
   GetProfessorCourseExams() {
     this.reg.GetSelectedCourseExams().subscribe({
       next: (res) => {
@@ -151,6 +157,6 @@ export class TeachingPlanComponent implements OnInit {
 
   getLabRegId(labId: number): number | null {
     const reg = this.selectedLabs.find(l => l.labId === labId);
-    return reg ? reg.id : null; // id è l'ID della registrazione ProfessorLabs
+    return reg ? reg.id : null;
   }
 }

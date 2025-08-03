@@ -41,6 +41,7 @@ p {
     margin-bottom: 20px;
 }
 
+/* Parte con le foto delle facoltà */
 .card-group {
     display: flex;
     justify-content: center;
@@ -133,16 +134,17 @@ p {
         height: 200px;
     }
 
-    .image-card img{
+    .image-card img {
         filter: brightness(50%) contrast(90%);
     }
 
     .image-card:hover {
-        flex: none; /* Disabilitato effetto hover su mobile */
+        flex: none;
+        /* Disabilitato effetto hover */
     }
 
     .text-overlay {
-        opacity: 1; /* Sempre visibile su mobile */
+        opacity: 1;
         left: 10px;
         bottom: 10px;
         right: 10px;
@@ -156,4 +158,23 @@ p {
     .text-overlay p {
         font-size: 16px;
     }
+}
+
+@media (max-width: 480px) {
+    .text-overlay {
+        opacity: 1;
+        left: 10px;
+        top: 15px;
+        right: 10px;
+        text-align: center;
+    }
+
+    .text-overlay h3 {
+        font-size: 15px;
+    }
+
+    .text-overlay p {
+        font-size: 13px;
+    }
+
 }

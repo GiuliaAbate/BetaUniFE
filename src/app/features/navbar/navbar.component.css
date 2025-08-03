@@ -56,7 +56,6 @@
 }
 
 /* Pulsanti */
-
 .loginBtn,
 .profileBtn,
 .logoutBtn {
@@ -107,7 +106,7 @@
     width: 100%;
   }
 
-  /* Collapse: menu verticale posizionato assolutamente sotto hamburger */
+  /* Menu verticale posizionato sotto hamburger */
   .navbar-collapse {
     position: absolute;
     top: 100%;
@@ -124,12 +123,12 @@
     z-index: 1050;
   }
 
-  /* Quando il menu è aperto (collapse.show), mostra */
+  /* Quando il menu è aperto  */
   .navbar-collapse.show {
     display: flex;
   }
 
-  /* Voci menu verticali */
+  /* Voci menu */
   .navbar-nav {
     flex-direction: column;
     gap: 0;
@@ -145,7 +144,6 @@
     font-size: 18px;
   }
 
-  /* Hover con bordo inferiore rimosso, colore di sfondo */
   .nav-item:hover {
     border-bottom: none;
     background-color: var(--secondary-color);

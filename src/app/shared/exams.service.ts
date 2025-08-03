@@ -17,6 +17,7 @@ export interface ExamInfos {
   providedIn: 'root'
 })
 
+//Servizio che gestisce chiamate per gli esami in generale e per l'iscrizione dello studente
 export class ExamsService {
 
   constructor(private http: HttpClient) { }
@@ -24,6 +25,7 @@ export class ExamsService {
   private apiUrl = 'https://localhost:7129/api/Exams';
   private regUrl = 'https://localhost:7129/api/ExamRegistrations';
 
+  //Per prendere le informazioni degli esami presenti in base alla facoltà dello studente/professore
   GetExamsInfos(): Observable<ExamInfos[]> {
     const token = sessionStorage.getItem('jwt');
     return this.http.get<ExamInfos[]>(`${this.apiUrl}/GetExamsInfo`, {
@@ -33,6 +35,7 @@ export class ExamsService {
     });
   }
 
+  //metodo che gestisce la chiamata per registrare lo studente all'esame
   ExamRegistration(examId: number): Observable<ExamInfos[]> {
     const token = sessionStorage.getItem('jwt');
 
@@ -46,6 +49,7 @@ export class ExamsService {
     );
   }
 
+  //Per prendere esami futuri dello studente
   GetPlannedExams(): Observable<ExamInfos[]> {
     const token = sessionStorage.getItem('jwt');
     return this.http.get<ExamInfos[]>(`${this.regUrl}/FutureExams`, {
@@ -55,6 +59,7 @@ export class ExamsService {
     });
   }
 
+  //Per prendere gli esami a cui è si è iscritto lo studente
   GetExams(): Observable<ExamInfos[]> {
     const token = sessionStorage.getItem('jwt');
     return this.http.get<ExamInfos[]>(`${this.regUrl}/ExamsByStudent`, {
@@ -64,6 +69,7 @@ export class ExamsService {
     });
   }
 
+  //Per disisicriversi da un esame
   DeleteExamReg(id: number): Observable<any> {
     const token = sessionStorage.getItem('jwt');
 

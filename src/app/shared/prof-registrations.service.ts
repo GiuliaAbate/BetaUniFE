@@ -23,6 +23,8 @@ export interface CourseExamInfo {
 @Injectable({
   providedIn: 'root'
 })
+
+//Servizio che gestisce le chiamate principali collegate al professore
 export class ProfRegistrationsService {
 
   constructor(private http: HttpClient) { }
@@ -31,6 +33,7 @@ export class ProfRegistrationsService {
   private regLabUrl = 'https://localhost:7129/api/ProfessorLabs'
   private regUrl = 'https://localhost:7129/api/ProfCourseExams';
 
+  //Si prendono i corsi (ed esami) che si possono aggiungere al piano didattico
   GetCourseExam(): Observable<CourseExamInfo[]> {
     const token = sessionStorage.getItem('jwt');
 
@@ -41,6 +44,7 @@ export class ProfRegistrationsService {
     });
   }
 
+  //Permette di aggiungere un corso (ed esame) al piano didattico selezionandolo e quindi si prende l'ID
   AddCourseExam(courseId: string, examId: number) {
     const token = sessionStorage.getItem('jwt');
 
@@ -54,6 +58,7 @@ export class ProfRegistrationsService {
     );
   }
 
+  //Metodo per prendere gli esami futuri 
   GetProfPlannedExams(): Observable<ExamInfos[]> {
     const token = sessionStorage.getItem('jwt');
     return this.http.get<ExamInfos[]>(`${this.regUrl}/ProfFutureExams`, {
@@ -63,6 +68,7 @@ export class ProfRegistrationsService {
     });
   }
 
+  //Metodo uguale a quello dei corsi ma questo permette di scegliere e aggiungere un laboratorio
   AddLab(labId: number): Observable<Laboratory[]> {
     const token = sessionStorage.getItem('jwt');
 
@@ -76,6 +82,7 @@ export class ProfRegistrationsService {
     );
   }
 
+  //Per permettere di disiscriversi sia dal corso che dall'esame essendo per lui collegati
   DeleteCourseExamReg(id: number): Observable<CourseExamInfo[]> {
     const token = sessionStorage.getItem('jwt');
 
@@ -88,6 +95,7 @@ export class ProfRegistrationsService {
     );
   }
 
+  //Per vedere i corsi selezionati
   GetSelectedCourses(): Observable<CourseExamInfo[]> {
     const token = sessionStorage.getItem('jwt');
     return this.http.get<CourseExamInfo[]>(`${this.regUrl}/ProfSelectedCourses`, {
@@ -97,6 +105,7 @@ export class ProfRegistrationsService {
     });
   }
 
+  //Per vedere gli esami selezionati
   GetSelectedExams(): Observable<CourseExamInfo[]> {
     const token = sessionStorage.getItem('jwt');
     return this.http.get<CourseExamInfo[]>(`${this.regUrl}/ProfSelectedExams`, {
@@ -106,6 +115,7 @@ export class ProfRegistrationsService {
     });
   }
 
+  // //Per vedere i laboratori selezionati
   GetSelectedLabs(): Observable<Laboratory[]> {
     const token = sessionStorage.getItem('jwt');
     return this.http.get<Laboratory[]>(`${this.regLabUrl}/ProfSelectedLabs`, {
@@ -115,6 +125,7 @@ export class ProfRegistrationsService {
     });
   }
 
+  //Per vedere sia i corsi che esami selezionati
   GetSelectedCourseExams(): Observable<CourseExamInfo[]> {
     const token = sessionStorage.getItem('jwt');
     return this.http.get<CourseExamInfo[]>(`${this.regUrl}/ProfessorCourseExams`, {
@@ -124,6 +135,7 @@ export class ProfRegistrationsService {
     });
   }
 
+  //Per permettere al professore di disiscriversi dal laboratorio scelto 
   DeleteLabReg(labId: number): Observable<Laboratory[]> {
     const token = sessionStorage.getItem('jwt');
     const headers = {

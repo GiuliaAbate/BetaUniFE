@@ -1,6 +1,9 @@
 <div class="main-container">
     <h1>Accedi a BetaUni</h1>
 
+    <!-- Schermata base che si vede all'inizio, due pulsanti per scegliere il ruolo
+    e in base a quello cliccato si va alla sezione che gestisce il login per studente o professore
+    -->
     <div *ngIf="!isClicked" class="user-choice">
         <h2>Sei uno <strong>studente</strong> o un <strong>professore</strong>?</h2>
 
@@ -12,6 +15,7 @@
         <p>Non sei già registrato? <a [routerLink]="'/register'">Registrati subito</a></p>
     </div>
 
+    <!-- Se il pulsante è stato cliccato si mostra il form -->
     <div *ngIf="isClicked" class="form-container">
 
         <button class="backBtn" (click)="goBack()">
@@ -23,6 +27,7 @@
             Indietro
         </button>
 
+        <!-- Si mostra messaggio diversi in base al ruolo scelto -->
         <div *ngIf="role == 'student'" class="text-role">
             <h2>Registrazione come <strong>studente</strong></h2>
         </div>
@@ -30,6 +35,7 @@
             <h2>Registrazione come <strong>professore</strong></h2>
         </div>
 
+        <!-- Form con validazioni di base -->
         <form (ngSubmit)='onSubmit()'>
             <div class="mb-3">
                 <label for="email" class="form-label">Email * </label>

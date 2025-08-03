@@ -21,12 +21,13 @@
                     <td>{{cs.name}}</td>
                     <td>{{cs.startDate}}</td>
                     <td>{{cs.endDate}}</td>
-                    <!-- <td><button class="formBtn" (click)="AddCourseToPlan(cs.courseId)">Aggiungi</button></td> -->
                     <td>
                         <button class="formBtn" *ngIf="!isRegistered(cs.courseId)"
                             (click)="AddCourseToPlan(cs.courseId)">
                             Iscriviti
                         </button>
+                        <!-- Se l'utente è già registrato al corso allora il pulsante è diverso ù
+                        e si fa una chiamata per potersi disiscrivere -->
                         <button class="formBtn" *ngIf="isRegistered(cs.courseId)"
                             (click)="DeleteCourse(getRegistrationId(cs.courseId))">
                             Disiscriviti

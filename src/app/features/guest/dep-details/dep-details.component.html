@@ -1,11 +1,10 @@
 <div class="main-container">
+  <!-- Si prende nome della facoltà in base alla card cliccata -->
   <div *ngIf="department" class="dep-title">
     <h1>{{department.name}}</h1>
   </div>
-  <!-- <div class="dep-title">
-    <h1>Nome facoltà</h1>
-  </div> -->
 
+  <!-- In base alla facoltà selezionata si mostrano informazioni diverse e inerenti a quella facoltà, quindi si va a vedere id della facoltà -->
 
   <!-- Informatica -->
   <div *ngIf="departmentId === 'A100'" class="intro-container">

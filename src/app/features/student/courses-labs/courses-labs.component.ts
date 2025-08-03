@@ -32,6 +32,7 @@ export class CoursesLabsComponent implements OnInit {
     this.GetStudentLabs();
   }
 
+  //Si caricano corsi e laboratori aggiunti dallo studente
   GetStudentCourses() {
     this.studRegSVC.GetCourses().subscribe({
       next: (res) => {

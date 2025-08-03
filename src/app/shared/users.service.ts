@@ -12,7 +12,7 @@ export interface Professor {
   phoneNumber: string;
   departmentId: string;
   enrollmentDate: Date;
-  departmentName : string;
+  departmentName: string;
 }
 
 export interface Student {
@@ -25,7 +25,7 @@ export interface Student {
   phoneNumber: string;
   departmentId: string;
   enrollmentDate: Date;
-  departmentName : string;
+  departmentName: string;
 }
 
 @Injectable({
@@ -38,8 +38,9 @@ export class UsersService {
   private studUrl = 'https://localhost:7129/api/Students';
   private profUrl = 'https://localhost:7129/api/Professors';
 
+  //Metodi per prendere informazioni dello studente e del professore
   GetStudentInfo(): Observable<Student> {
-    const token = sessionStorage.getItem('jwt');
+    const token = sessionStorage.getItem('jwt'); //il token si memorizza in sessionStorage
     return this.http.get<Student>(`${this.studUrl}/ViewStudentInfo`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -56,6 +57,7 @@ export class UsersService {
     });
   }
 
+  //Metodi per aggiornare le informazioni (numero di telefono e password) dello studente e del professore
   UpdateStudentInfos(studInfos: { phoneNumber?: string; password?: string }): Observable<void> {
     const token = sessionStorage.getItem('jwt');
 
@@ -66,7 +68,7 @@ export class UsersService {
 
     return this.http.put<void>(
       `${this.studUrl}/UpdateStudent`,
-      studInfos, // il body, es: { phoneNumber: '123', password: 'newpass' }
+      studInfos,
       { headers }
     );
   }
@@ -81,7 +83,7 @@ export class UsersService {
 
     return this.http.put<void>(
       `${this.profUrl}/UpdateProfessor`,
-      profInfos, // il body, es: { phoneNumber: '123', password: 'newpass' }
+      profInfos,
       { headers }
     );
   }

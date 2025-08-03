@@ -98,14 +98,10 @@ a:hover {
     margin-top: 8px;
     color: red;
     font-weight: 500;
-    padding: 0;
+    padding: 10px;
 }
 
 input.ng-invalid.ng-touched,
 select.ng-invalid.ng-touched {
     border-color: red;
-}
-
-.alert{
-    padding: 10px;
 }

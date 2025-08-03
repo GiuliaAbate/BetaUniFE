@@ -28,6 +28,7 @@ export class ExamsComponent implements OnInit {
     this.GetStudentExams();
   }
 
+  //Si prende elenco degli esami a cui ci si può iscrivere
   GetExamsList() {
     this.examService.GetExamsInfos().subscribe({
       next: (res) => {
@@ -40,9 +41,10 @@ export class ExamsComponent implements OnInit {
     });
   }
 
+  //Metodo che prende chiamata per eseguire la registrazione
   RegisterToExam(id: number) {
     this.examService.ExamRegistration(id).subscribe({
-      next: (res) => {
+      next: () => {
         this.GetStudentExams();
         this.GetExamsList();
       },
@@ -53,6 +55,7 @@ export class ExamsComponent implements OnInit {
     })
   }
 
+  //Si prendono esami aggiunti dallo studente
   GetStudentExams() {
     this.examService.GetExams().subscribe({
       next: (res) => {
@@ -65,9 +68,12 @@ export class ExamsComponent implements OnInit {
     })
   }
 
-  DeleteExam(regId: number) {
-    const reg = this.studentExams.find(e => e.examId === regId);
-    if (!reg) return;
+  //Per disiscriversi da un esame
+  DeleteExam(id: number) {
+    const reg = this.studentExams.find(e => e.examId === id);
+    if (!reg) {
+      return
+    };
 
     this.examService.DeleteExamReg(reg.id).subscribe({
       next: (res) => {
